@@ -55,6 +55,8 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+Plugin 'vimwiki/vimwiki'
+
 Plugin 'tmhedberg/SimpylFold'
 
 Bundle 'Valloric/YouCompleteMe'
