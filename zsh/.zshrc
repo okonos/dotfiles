@@ -82,7 +82,8 @@ autoload -U zmv
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # zsh-syntax-highlighting must be last on the list!
-plugins=(git virtualenvwrapper zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(git virtualenvwrapper autojump zsh-syntax-highlighting \
+	zsh-autosuggestions)
 
 # Disable default virtualenv prompt (replaced by agnoster's powerline prompt)
 export VIRTUAL_ENV_DISABLE_PROMPT=1
