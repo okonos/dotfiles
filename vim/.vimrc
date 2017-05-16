@@ -1,12 +1,12 @@
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer: 
+" Maintainer:
 "       Amir Salihefendic
 "       http://amix.dk - amix@amix.dk
 "
-" Version: 
+" Version:
 "       5.0 - 29/05/12 15:43:36
 "
-" Blog_post: 
+" Blog_post:
 "       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
 "
 " Awesome_version:
@@ -19,7 +19,7 @@
 " Syntax_highlighted:
 "       http://amix.dk/vim/vimrc.html
 "
-" Raw_version: 
+" Raw_version:
 "       http://amix.dk/vim/vimrc.txt
 "
 " Sections:
@@ -74,6 +74,16 @@ Bundle 'klen/python-mode'
 
 Plugin 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
+
+" Go
+Plugin 'fatih/vim-go'
+
+" JavaScript
+Plugin 'pangloss/vim-javascript'
+Plugin 'jelera/vim-javascript-syntax'
+
+" Elixir
+Plugin 'elixir-lang/vim-elixir'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -136,6 +146,9 @@ let g:pymode_rope=0
 " YouCompleteMe JediHTTP python binary path
 let g:ycm_python_binary_path='python3'
 
+" put syntastic into passive mode
+let g:syntastic_mode_map = { 'mode': 'passive' }
+
 "python with virtualenv support (Plugin used instead)
 "py3 << EOF
 "import os
@@ -168,7 +181,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
-nmap <leader>w :w!<cr>
+nmap <leader>W :w!<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
@@ -181,7 +194,8 @@ vnoremap <leader>s :sort<cr>
 "vnoremap < <gv 
 "vnoremap > >gv
 
-map <F5> :!perl %<CR> 
+" :R runs current file
+command! R !./%
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -197,6 +211,7 @@ source $VIMRUNTIME/delmenu.vim
 source $VIMRUNTIME/menu.vim
 
 " Turn on the WiLd menu
+set wildmode=longest,list,full  " first tab completes as much as possible, second tab provides a list, third and subsequent cycle through options
 set wildmenu
 
 " Ignore compiled files
@@ -363,7 +378,8 @@ map <C-l> <C-W>l
 nnoremap <leader>b :ls<CR>:buffer
 
 " Close the current buffer
-map <leader>bd :Bclose<cr>:tabclose<cr>gT
+map <leader>bd :Bclose<cr>
+" :tabclose<cr>gT
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
@@ -410,7 +426,8 @@ au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
-set rtp+=/home/okonos/.local/lib/python3.5/site-packages/powerline/bindings/vim/
+set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
+" /home/okonos/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 
 " Always show the status line
 set laststatus=2
