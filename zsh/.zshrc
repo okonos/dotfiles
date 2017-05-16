@@ -1,5 +1,6 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+export PATH=/usr/local/go/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/okonos/.oh-my-zsh
@@ -19,6 +20,11 @@ export MANPAGER=most
 HISTSIZE=10000
 HISTFILESIZE=11000
 
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+HIST_STAMPS="dd.mm.yyyy"
+
 # save every command before it is executed
 setopt inc_append_history
 
@@ -26,7 +32,7 @@ setopt inc_append_history
 setopt share_history
 
 # History - ignore these commands
-HISTIGNORE="reboot:poweroff:ls:pwd:exit"
+HISTORY_IGNORE="(reboot|poweroff|ls|cd|fg|pwd|exit)"
 
 # Uncomment and remove references to oh-my-zsh to replace agnoster powerline
 #if [[ -r ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
@@ -38,6 +44,8 @@ eval `dircolors ~/.solarized/dircolors.256dark`
 
 # zmv autoload
 autoload -U zmv
+
+setopt extendedglob
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
@@ -69,11 +77,6 @@ autoload -U zmv
 # much, much faster.
 # DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
 # Would you like to use another custom folder than $ZSH/custom?
 # ZSH_CUSTOM=/path/to/new-custom-folder
 
@@ -82,8 +85,8 @@ autoload -U zmv
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # zsh-syntax-highlighting must be last on the list!
-plugins=(git virtualenvwrapper autojump zsh-syntax-highlighting \
-	zsh-autosuggestions)
+plugins=(git virtualenvwrapper autojump zsh-autosuggestions \
+	zsh-syntax-highlighting)  # must be last on the list!
 
 # Disable default virtualenv prompt (replaced by agnoster's powerline prompt)
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -91,6 +94,9 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 source $ZSH/oh-my-zsh.sh
 
 # User configuration
+
+# set GOPATH
+export GOPATH=$HOME/src/go
 
 # autosuggestions color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
