@@ -29,7 +29,7 @@ HIST_STAMPS="dd.mm.yyyy"
 setopt inc_append_history
 
 # retrieve the history file every time history is called upon
-setopt share_history
+# setopt share_history
 
 # History - ignore these commands
 HISTORY_IGNORE="(reboot|poweroff|ls|cd|fg|pwd|exit)"
@@ -88,6 +88,12 @@ setopt extendedglob
 plugins=(git virtualenvwrapper autojump zsh-autosuggestions \
 	zsh-syntax-highlighting)  # must be last on the list!
 
+# Docker compose completion
+fpath=(~/.zsh/completion $fpath)
+
+# Load compinit
+autoload -Uz compinit && compinit -i
+
 # Disable default virtualenv prompt (replaced by agnoster's powerline prompt)
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
@@ -98,11 +104,17 @@ source $ZSH/oh-my-zsh.sh
 # set GOPATH
 export GOPATH=$HOME/src/go
 
+# set Go bin path
+export GOBIN=$GOPATH/bin
+
 # autosuggestions color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
 
 # bind ctrl+space to accept the current suggestion
 bindkey '^ ' autosuggest-accept
+
+# remap Ctrl+u to backward-kill-line (by default is kill-whole-line)
+bindkey \^U backward-kill-line
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
@@ -133,3 +145,6 @@ bindkey '^ ' autosuggest-accept
 #
 # Personal aliases placed in ZSH_CUSTOM/.aliases
 # (.oh-my-zsh/custom/aliases.zsh)
+
+# Disable share_history
+unsetopt share_history

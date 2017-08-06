@@ -75,15 +75,17 @@ Bundle 'klen/python-mode'
 Plugin 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
 
+" C
+Plugin 'https://github.com/WolfgangMehner/c-support'
+
 " Go
 Plugin 'fatih/vim-go'
 
-" JavaScript
-Plugin 'pangloss/vim-javascript'
-Plugin 'jelera/vim-javascript-syntax'
+Plugin 'Matt-Deacalion/vim-systemd-syntax'
 
-" Elixir
-Plugin 'elixir-lang/vim-elixir'
+" JavaScript
+" Plugin 'pangloss/vim-javascript'
+" Plugin 'jelera/vim-javascript-syntax'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -137,6 +139,9 @@ map <F9> <plug>NERDTreeTabsToggle<CR>
 let g:pymode_python = 'python3'
 let g:syntastic_python_python_exec = 'python3'
 
+" Autocomplete fix
+autocmd BufNewFile *.py :set omnifunc=python3complete#Complete
+
 " Disable rope from python-mode bundle
 " (tends to hang for a few secs in dirs with lots of files)
 let g:pymode_rope=0
@@ -147,8 +152,37 @@ let g:pymode_rope=0
 let g:ycm_python_binary_path='python3'
 
 " put syntastic into passive mode
-let g:syntastic_mode_map = { 'mode': 'passive' }
+" let g:syntastic_mode_map = { 'mode': 'passive' }
 
+let g:ycm_server_keep_logfiles = 1
+let g:ycm_server_log_level = 'debug'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-go
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+autocmd FileType go nmap <leader>b	<Plug>(go-build)
+autocmd FileType go nmap <leader>r	<Plug>(go-run)
+
+" Automatically format and rewrite import declarations
+let g:go_fmt_command = "goimports"
+
+" Run checkers on save
+let g:go_metalinter_autosave = 1
+
+" Run :GoInfo
+autocmd FileType go nmap <leader>i <Plug>(go-info)
+" Show info whenever cursor is moved
+let g:go_auto_type_info = 1
+
+" Beautification
+" let g:go_highlight_types		= 1
+" let g:go_highlight_fields		= 1
+let g:go_highlight_functions	= 1
+let g:go_highlight_methods		= 1
+let g:go_highlight_operators	= 1
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "python with virtualenv support (Plugin used instead)
 "py3 << EOF
 "import os
@@ -388,7 +422,8 @@ map <leader>l :bnext<cr>
 map <leader>h :bprevious<cr>
 
 " last accessed buffer
-map <leader>bl :b#<cr>
+" map <leader>gl :b#<cr>
+map gl :b#<cr>
 
 " Useful mappings for managing tabs
 map <leader>tn :tabnew<cr>
@@ -455,6 +490,11 @@ if has("mac") || has("macunix")
   vmap <D-k> <M-k>
 endif
 
+" Move between errors in quickfix list
+map <C-n> :cnext<cr>
+map <C-m> :cprevious<cr>
+nnoremap <leader>a :cclose<cr>
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   exe "normal mz"
@@ -475,7 +515,7 @@ vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 " Open Ag and put the cursor in the right position
 map <leader>ag :Ag 
 
-" When you press <leader>r you can search and replace the selected text
+" When you press <leader>sr you can search and replace the selected text
 vnoremap <silent> <leader>sr :call VisualSelection('replace', '')<CR>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
@@ -534,7 +574,7 @@ function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
-endfunction 
+endfunction
 
 function! VisualSelection(direction, extra_filter) range
     let l:saved_reg = @"
