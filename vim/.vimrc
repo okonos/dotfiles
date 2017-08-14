@@ -126,6 +126,11 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin-related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vimwiki
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:vimwiki_map_prefix = '<leader>v'
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *YouCompleteMe
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ensures autocomplete window goes away after you're done
@@ -218,7 +223,7 @@ let mapleader = ","
 let g:mapleader = ","
 
 " Fast saving
-nmap <leader>W :w!<cr>
+nmap <leader>w :w!<cr>
 
 " :W sudo saves the file 
 " (useful for handling the permission-denied error)
