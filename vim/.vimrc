@@ -55,6 +55,9 @@ call vundle#begin()
 " " let Vundle manage Vundle, required
 Plugin 'VundleVim/Vundle.vim'
 
+" navigate seamlessly between vim and tmux splits using <ctrl-direction> hotkeys
+Plugin 'christoomey/vim-tmux-navigator'
+
 Plugin 'vimwiki/vimwiki'
 
 Plugin 'tmhedberg/SimpylFold'
