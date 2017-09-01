@@ -239,6 +239,17 @@ vnoremap <leader>s :sort<cr>
 " :R runs current file
 command! R !./%
 
+" Allow Alt-key shortcuts
+" https://stackoverflow.com/questions/6778961/alt-key-shortcuts-not-working-on-gnome-terminal-with-vim
+let c='a'
+while c <= 'z'
+	exec "set <A-".c.">=\e".c
+	exec "imap \e".c." <A-".c.">"
+	let c = nr2char(1+char2nr(c))
+endw
+
+set timeout ttimeoutlen=20
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
@@ -426,8 +437,10 @@ map <leader>bd :Bclose<cr>
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
-map <leader>l :bnext<cr>
-map <leader>h :bprevious<cr>
+" map <leader>h :bprevious<cr>
+" map <leader>l :bnext<cr>
+noremap <M-h> :bprevious<cr>
+noremap <M-l> :bnext<cr>
 
 " last accessed buffer
 " map <leader>gl :b#<cr>
