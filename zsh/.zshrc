@@ -1,5 +1,9 @@
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+export DISABLE_AUTO_TITLE='true'
+
+# Add go binaries to PATH
 export PATH=/usr/local/go/bin:$PATH
 
 # Path to your oh-my-zsh installation.
@@ -14,7 +18,7 @@ ZSH_THEME="agnoster"
 DEFAULT_USER="okonos"
 
 # set most pager to display man pages
-export MANPAGER=most
+# export MANPAGER=most
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
 HISTSIZE=10000
@@ -32,7 +36,7 @@ setopt inc_append_history
 # setopt share_history
 
 # History - ignore these commands
-HISTORY_IGNORE="(reboot|poweroff|ls|cd|fg|pwd|exit)"
+HISTORY_IGNORE="(reboot|poweroff|ls|cd|fg|clear|pwd|exit)"
 
 # Uncomment and remove references to oh-my-zsh to replace agnoster powerline
 #if [[ -r ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
