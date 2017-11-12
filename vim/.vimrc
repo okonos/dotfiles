@@ -320,8 +320,16 @@ set tm=500
 " Add a bit extra margin to the left
 set foldcolumn=0
 
-" Display line numbers
-"set number
+" Display hybrid line numbers (both absolute and relative)
+" only on focused buffer and in normal mode
+" https://jeffkreeftmeijer.com/vim-number/
+"set number relativenumber
+"
+"augroup numbertoggle
+"	autocmd!
+"	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+"	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+":augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
