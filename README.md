@@ -7,6 +7,8 @@ Managed with [GNU Stow](http://brandon.invergo.net/news/2012-05-26-using-gnu-sto
 [vim-surround](https://github.com/tpope/vim-surround):
 -----------------------
 
+__(To surround without whitespace use closing brackets)__
+
 Surround word:
 
     ysiw"
