@@ -477,6 +477,9 @@ endtry
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
 
+" Go to Definition
+" http://tartley.com/?p=1277
+map <f12> :!start /min ctags -R .<cr>
 
 """"""""""""""""""""""""""""""
 " => Status line
