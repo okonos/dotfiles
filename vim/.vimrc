@@ -57,34 +57,25 @@ Plugin 'VundleVim/Vundle.vim'
 
 " navigate seamlessly between vim and tmux splits using <ctrl-direction> hotkeys
 Plugin 'christoomey/vim-tmux-navigator'
-
-Plugin 'vimwiki/vimwiki'
-
-Plugin 'tmhedberg/SimpylFold'
-
-Bundle 'Valloric/YouCompleteMe'
-
-Plugin 'Konfekt/FastFold'
-
+Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
-
+Plugin 'vimwiki/vimwiki'
+Plugin 'tmhedberg/SimpylFold'
+Bundle 'Valloric/YouCompleteMe'
+Plugin 'Konfekt/FastFold'
 Plugin 'scrooloose/syntastic'
-
 Plugin 'kien/ctrlp.vim'
-
 Bundle 'klen/python-mode'
 "Plugin 'jmcantrell/vim-virtualenv'
-
 Plugin 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
-
-" C
 Plugin 'https://github.com/WolfgangMehner/c-support'
-
-" Go
 Plugin 'fatih/vim-go'
-
 Plugin 'Matt-Deacalion/vim-systemd-syntax'
+" Plugin 'altercation/vim-colors-solarized'
+
+" Vim has undo branches and this plugin visualizes the undo tree
+" https://github.com/mbbill/undotree
 
 " JavaScript
 " Plugin 'pangloss/vim-javascript'
