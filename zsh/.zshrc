@@ -34,6 +34,10 @@ setopt inc_append_history
 
 # retrieve the history file every time history is called upon
 # setopt share_history
+# Disable share_history
+unsetopt share_history
+
+setopt HIST_IGNORE_SPACE
 
 # History - ignore these commands
 HISTORY_IGNORE="(reboot|poweroff|ls|cd|fg|clear|pwd|exit)"
@@ -153,5 +157,3 @@ bindkey \^U backward-kill-line
 # Personal aliases placed in ZSH_CUSTOM/.aliases
 # (.oh-my-zsh/custom/aliases.zsh)
 
-# Disable share_history
-unsetopt share_history
