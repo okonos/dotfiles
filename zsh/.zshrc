@@ -3,8 +3,9 @@
 
 export DISABLE_AUTO_TITLE='true'
 
+# replaced by update-alternatives
 # Add go binaries to PATH
-export PATH=/usr/local/go/bin:$PATH
+# export PATH=/usr/local/go/bin:$PATH
 
 # Path to your oh-my-zsh installation.
 export ZSH=/home/okonos/.oh-my-zsh
@@ -40,7 +41,7 @@ unsetopt share_history
 setopt HIST_IGNORE_SPACE
 
 # History - ignore these commands
-HISTORY_IGNORE="(reboot|poweroff|ls|cd|fg|clear|pwd|exit)"
+HISTORY_IGNORE="(reboot|poweroff|ls|cd|fg|clear|pwd|htop|exit)"
 
 # Uncomment and remove references to oh-my-zsh to replace agnoster powerline
 #if [[ -r ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
