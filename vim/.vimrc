@@ -56,22 +56,28 @@ call vundle#begin()
 Plugin 'VundleVim/Vundle.vim'
 
 " navigate seamlessly between vim and tmux splits using <ctrl-direction> hotkeys
+Plugin 'itchyny/lightline.vim'
+Plugin 'taohex/lightline-buffer'
+Plugin 'taohex/lightline-solarized'
+Plugin 'maximbaz/lightline-ale'  " warnings and errors on lightline
 Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-surround'
+Plugin 'tpope/vim-fugitive'
+Plugin 'tpope/vim-rhubarb'  " for :Gbrowse
+Plugin 'airblade/vim-gitgutter'
 Plugin 'vimwiki/vimwiki'
 Plugin 'tmhedberg/SimpylFold'
 Bundle 'Valloric/YouCompleteMe'
 Plugin 'Konfekt/FastFold'
-Plugin 'scrooloose/syntastic'
+" Plugin 'vim-syntastic/syntastic' replaced by asynchronous ALE below
+Plugin 'w0rp/ale'
 Plugin 'kien/ctrlp.vim'
 Bundle 'klen/python-mode'
 "Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/nerdtree'
 Bundle 'jistr/vim-nerdtree-tabs'
-Plugin 'https://github.com/WolfgangMehner/c-support'
+Plugin 'sheerun/vim-polyglot'
 Plugin 'fatih/vim-go'
-Plugin 'Matt-Deacalion/vim-systemd-syntax'
 " Plugin 'altercation/vim-colors-solarized'
 
 " Vim has undo branches and this plugin visualizes the undo tree
@@ -117,6 +123,88 @@ filetype plugin indent on    " required
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin-related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" lightline.vim
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" in order to make the ui more powerline-like (arrows), see:
+" https://github.com/itchyny/lightline.vim/issues/274
+let g:lightline = {
+	\ 'colorscheme': 'lightline_solarized',
+	\ 'tabline': {
+	\   'left': [ [ 'bufferinfo' ], [ 'separator' ],
+    \             [ 'bufferbefore', 'buffercurrent', 'bufferafter' ], ],
+    \   'right': [ [ 'buffers' ], ],
+	\ },
+	\ 'active': {
+	\	'left': [['mode', 'paste'],	['gitbranch', 'filename', 'modified']],
+	\	'right': [['lineinfo'], ['percent'],
+	\			 ['readonly', 'linter_errors', 'linter_warnings']]
+	\ },
+	\ 'component_expand': {
+    \   'buffercurrent': 'lightline#buffer#buffercurrent',
+    \   'bufferbefore': 'lightline#buffer#bufferbefore',
+    \   'bufferafter': 'lightline#buffer#bufferafter',
+	\   'linter_warnings': 'lightline#ale#warnings',
+	\   'linter_errors': 'lightline#ale#errors',
+    \ },
+    \ 'component_type': {
+    \   'buffercurrent': 'tabsel',
+    \   'bufferbefore': 'raw',
+    \   'bufferafter': 'raw',
+	\   'linter_warnings': 'warning',
+	\   'linter_errors': 'error',
+    \ },
+	\ 'component_function': {
+	\	'gitbranch': 'fugitive#head',
+	\	'bufferinfo': 'lightline#buffer#bufferinfo',
+	\ },
+	\ 'component': {
+	\	'separator': '',
+	\	'buffers': 'buffers',
+	\ },
+	\ }
+
+" lightline-ale icons
+let g:lightline#ale#indicator_warnings = "◆"  " \uf071 not found
+let g:lightline#ale#indicator_errors = "✗"  " \uf05e not found
+" let g:lightline#ale#indicator_ok = "\uf00c" not found
+
+set showtabline=2
+" lightline-buffer ui settings
+let g:lightline_buffer_logo = ' '
+let g:lightline_buffer_readonly_icon = ''
+let g:lightline_buffer_modified_icon = '+'  " '✭'
+let g:lightline_buffer_git_icon = ' '
+let g:lightline_buffer_ellipsis_icon = '..'
+let g:lightline_buffer_expand_left_icon = '◀ '
+let g:lightline_buffer_expand_right_icon = ' ▶'
+let g:lightline_buffer_active_buffer_left_icon = ''
+let g:lightline_buffer_active_buffer_right_icon = ''
+let g:lightline_buffer_separator_icon = '  '
+
+" lightline-buffer function settings
+let g:lightline_buffer_show_bufnr = 1
+let g:lightline_buffer_rotate = 0
+let g:lightline_buffer_fname_mod = ':t'
+let g:lightline_buffer_excludes = ['vimfiler']
+
+let g:lightline_buffer_maxflen = 30
+let g:lightline_buffer_maxfextlen = 3
+let g:lightline_buffer_minflen = 16
+let g:lightline_buffer_minfextlen = 3
+let g:lightline_buffer_reservelen = 20
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" gitgutter
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nmap ]g <Plug>GitGutterNextHunk
+nmap [g <Plug>GitGutterPrevHunk
+nmap <Leader>ga <Plug>GitGutterStageHunk
+nmap <leader>gu <Plug>GitGutterUndoHunk
+nmap <leader>gp <Plug>GitGutterPreviewHunk
+
+" let g:gitgutter_async = 0
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vimwiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimwiki_map_prefix = '<leader>v'
@@ -128,7 +216,7 @@ let g:vimwiki_map_prefix = '<leader>v'
 let g:ycm_autoclose_preview_window_after_completion=1
 
 " Shortcut for goto definition
-map <leader>g  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Toggle NerdTree shortcut
 map <F10> :NERDTreeToggle<CR>
@@ -145,6 +233,8 @@ autocmd BufNewFile *.py :set omnifunc=python3complete#Complete
 " (tends to hang for a few secs in dirs with lots of files)
 let g:pymode_rope=0
 
+let g:pymode_folding = 0
+
 " let g:pymode_lint_options_mccabe={'complexity': 15}
 
 " YouCompleteMe JediHTTP python binary path
@@ -155,6 +245,14 @@ let g:ycm_python_binary_path='python3'
 
 let g:ycm_server_keep_logfiles = 1
 let g:ycm_server_log_level = 'debug'
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ALE
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:ale_lint_delay = 2000
+" Don't run while typing, can be set to insert or normal, see :help
+" let g:ale_lint_on_text_changed = 'never'
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -178,8 +276,14 @@ let g:go_auto_type_info = 1
 " let g:go_highlight_types		= 1
 " let g:go_highlight_fields		= 1
 let g:go_highlight_functions	= 1
-let g:go_highlight_methods		= 1
+" let g:go_highlight_methods		= 1
 let g:go_highlight_operators	= 1
+
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" vim-polyglot
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:polyglot_disabled = ['python', 'go']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "python with virtualenv support (Plugin used instead)
@@ -352,7 +456,7 @@ endif
 
 " Set utf8 as standard encoding and en_US as the standard language
 set encoding=utf8
-set fileencodings=utf8 
+set fileencodings=utf8
 
 " Use Unix as the standard file type
 set ffs=unix,dos,mac
@@ -484,7 +588,8 @@ map <f12> :!start /min ctags -R .<cr>
 """"""""""""""""""""""""""""""
 " => Status line
 """"""""""""""""""""""""""""""
-set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
+" Replaced with lightline-vim
+" set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
 " /home/okonos/.local/lib/python3.5/site-packages/powerline/bindings/vim/
 
 " Always show the status line
