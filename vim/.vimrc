@@ -1,7 +1,9 @@
-" Blog_post:
-"       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
+" Inspirations:
+"	http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
+"	https://statico.github.io/vim3.html (goldmine)
 "
 " Sections:
+"    -> Plugins
 "    -> General
 "    -> VIM user interface
 "    -> Colors and Fonts
@@ -20,7 +22,7 @@
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" => Vundle
+" => Plugins (Vundle)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
