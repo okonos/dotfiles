@@ -1,26 +1,5 @@
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Maintainer:
-"       Amir Salihefendic
-"       http://amix.dk - amix@amix.dk
-"
-" Version:
-"       5.0 - 29/05/12 15:43:36
-"
 " Blog_post:
 "       http://amix.dk/blog/post/19691#The-ultimate-Vim-configuration-on-Github
-"
-" Awesome_version:
-"       Get this config, nice color schemes and lots of plugins!
-"
-"       Install the awesome version from:
-"
-"           https://github.com/amix/vimrc
-"
-" Syntax_highlighted:
-"       http://amix.dk/vim/vimrc.html
-"
-" Raw_version:
-"       http://amix.dk/vim/vimrc.txt
 "
 " Sections:
 "    -> General
@@ -82,10 +61,6 @@ Plugin 'fatih/vim-go'
 
 " Vim has undo branches and this plugin visualizes the undo tree
 " https://github.com/mbbill/undotree
-
-" JavaScript
-" Plugin 'pangloss/vim-javascript'
-" Plugin 'jelera/vim-javascript-syntax'
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
@@ -286,15 +261,6 @@ let g:go_highlight_operators	= 1
 let g:polyglot_disabled = ['python', 'go']
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-"python with virtualenv support (Plugin used instead)
-"py3 << EOF
-"import os
-"import sys
-"if 'VIRTUAL_ENV' in os.environ:
-"  project_base_dir = os.environ['VIRTUAL_ENV']
-"  activate_this = os.path.join(project_base_dir, 'bin/activate_this.py')
-"  execfile(activate_this, dict(__file__=activate_this))
-"EOF
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -611,13 +577,6 @@ nmap <M-k> mz:m-2<cr>`z
 vmap <M-j> :m'>+<cr>`<my`>mzgv`yo`z
 vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
-if has("mac") || has("macunix")
-  nmap <D-j> <M-j>
-  nmap <D-k> <M-k>
-  vmap <D-j> <M-j>
-  vmap <D-k> <M-k>
-endif
-
 " Move between errors in quickfix list
 map <C-n> :cnext<cr>
 map <C-m> :cprevious<cr>
@@ -750,8 +709,3 @@ function! <SID>BufcloseCloseIt()
      execute("bdelete! ".l:currentBufNum)
    endif
 endfunction
-
-" Make VIM remember position in file after reopen
-" if has("autocmd")
-"   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-"endif
