@@ -294,8 +294,15 @@ let g:polyglot_disabled = ['python', 'go']
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Sets how many lines of history VIM has to remember
 set history=700
-
 set undolevels=700
+
+" turn off linewise keys -- normally, the `j' and `k' keys move the cursor down
+" one entire line. with line wrapping on, this can cause the cursor to actually
+" skip a few lines on the screen because it's moving from line N to line N+1 in
+" the file. I want this to act more visually -- I want `down' to mean the next
+" line on the screen
+map j gj
+map k gk
 
 " Enable filetype plugins
 filetype plugin on
@@ -307,16 +314,15 @@ set autoread
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" :W sudo saves the file 
-" (useful for handling the permission-denied error)
+" :W sudo saves the file (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
 
 " Map sort fuction to a key
 vnoremap <leader>s :sort<cr>
 
-" Easier moving of code blocks (better indentation)
-"vnoremap < <gv 
-"vnoremap > >gv
+" Easier moving of code blocks (re-enter visual mode after identing)
+vnoremap < <gv 
+vnoremap > >gv
 
 " :R runs current file
 command! R !./%
@@ -336,71 +342,37 @@ set timeout ttimeoutlen=20
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Set 7 lines to the cursor - when moving vertically using j/k
-set so=7
-
-" Avoid garbled characters in Chinese language windows OS
-let $LANG='en' 
-set langmenu=en
-source $VIMRUNTIME/delmenu.vim
-source $VIMRUNTIME/menu.vim
-
-" Turn on the WiLd menu
+set so=7  " Set 7 lines to the cursor - when moving vertically using j/k
+set wildmenu  " show possible completions on the command line
 set wildmode=longest,list,full  " first tab completes as much as possible, second tab provides a list, third and subsequent cycle through options
-set wildmenu
-
-" Ignore compiled files
-set wildignore=*.o,*~,*.pyc
-if has("win16") || has("win32")
-    set wildignore+=.git\*,.hg\*,.svn\*
-else
-    set wildignore+=*/.git/*,*/.hg/*,*/.svn/*,*/.DS_Store
-endif
-
-"Always show current position
-set ruler
-
-" Height of the command bar
-"set cmdheight=2
-
-" A buffer becomes hidden when it is abandoned
-set hid
+set wildignore=*.class,*.o,*~,*.pyc,.git  " Ignore certain files in completion
+set shortmess+=A    " Don't bother me when a swapfile exists
+set ruler           " Always show current position
+" set cmdheight=2   " Height of the command bar
+set hid			" A buffer becomes hidden when it is abandoned
+set hlsearch	" Highlight search results
+set ignorecase	" Case insensitive
+set incsearch	" Search as you type
+set infercase   " Completion recognizes capitalizaton
+set smartcase	" When searching try to be smart about cases (ALL CAPS)
+set lazyredraw	" Don't redraw while executing macros (good performance config)
+set magic		" For regular expressions turn magic on
+set showmatch	" Show matching brackets when text indicator is over them
+set mat=2		" How many tenths of a second to blink when matching brackets
+set foldcolumn=0  " Add a bit extra margin to the left
+set encoding=utf8	" UTF-8 by default
+set fileencodings=utf8
+set ffs=unix,dos,mac  " Use Unix as the standard file type
 
 " Configure backspace so it acts as it should act
 set backspace=eol,start,indent
 set whichwrap+=<,>,h,l
-
-" Ignore case when searching
-set ignorecase
-
-" When searching try to be smart about cases 
-set smartcase
-
-" Highlight search results
-set hlsearch
-
-" Makes search act like search in modern browsers
-set incsearch 
-
-" Don't redraw while executing macros (good performance config)
-set lazyredraw 
-
-" For regular expressions turn magic on
-set magic
-
-" Show matching brackets when text indicator is over them
-set showmatch 
-" How many tenths of a second to blink when matching brackets
-set mat=2
 
 " No annoying sound on errors
 set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
-" Add a bit extra margin to the left
-set foldcolumn=0
 
 " Display hybrid line numbers (both absolute and relative)
 " only on focused buffer and in normal mode
@@ -419,7 +391,8 @@ set foldcolumn=0
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Enable syntax highlighting
 let python_highlight_all=1
-syntax on " enable
+syntax on
+set background=dark
 
 set t_Co=256
 "color wombat256mod | molokai
@@ -429,9 +402,7 @@ catch
 endtry
 
 " molokai background color setting
-let g:molokai_original = 1
-
-set background=dark
+" let g:molokai_original = 1
 
 " Set extra options when running in GUI mode
 if has("gui_running")
@@ -440,13 +411,6 @@ if has("gui_running")
     set t_Co=256
     set guitablabel=%M\ %t
 endif
-
-" Set utf8 as standard encoding and en_US as the standard language
-set encoding=utf8
-set fileencodings=utf8
-
-" Use Unix as the standard file type
-set ffs=unix,dos,mac
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -462,23 +426,23 @@ set ffs=unix,dos,mac
 " => Text, tab and indent related
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
-"set expandtab
+set expandtab
  
 " Be smart when using tabs ;)
-set smarttab
+" set smarttab
 
 " 1 tab == 4 spaces
 set shiftwidth=4
 set tabstop=4
-set softtabstop=4
+set softtabstop=4  " Spaces 'feel' like tabs
 
 " Linebreak on 500 characters
 set lbr
 set tw=500
 
-set ai "Auto indent
-" set si "Smart indent (does not allow to indent comments with >> in python)
-set wrap "Wrap lines
+set autoindent  " Carry over indenting from previous line
+set wrap        " Wrap lines
+" set si  " Smart indent (does not allow to indent comments with >> in python)
 
 " Enable folding
 set foldmethod=indent
@@ -486,6 +450,7 @@ set foldlevel=99
 
 " Enable folding with spacebar
 nnoremap <space> za
+vnoremap <space> zf
 
 " Mark extra whitespace as bad, probably color it red
 highlight BadWhitespace ctermbg=red guibg=darkred
@@ -504,10 +469,6 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Moving around, tabs, windows and buffers
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Map <Space> to / (search) and Ctrl-<Space> to ? (backwards search)
-" map <space> /
-" map <c-space> ?
-
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
@@ -518,11 +479,10 @@ map <C-h> <C-W>h
 map <C-l> <C-W>l
 
 " Buffer management (switching)
-nnoremap <leader>b :ls<CR>:buffer
+" nnoremap <leader>b :ls<CR>:buffer
 
 " Close the current buffer
 map <leader>bd :Bclose<cr>
-" :tabclose<cr>gT
 
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
@@ -602,6 +562,18 @@ vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 map <C-n> :cnext<cr>
 map <C-m> :cprevious<cr>
 nnoremap <leader>a :cclose<cr>
+nmap \x :cclose<cr>
+
+" Emacs-like bindings in command line -- `:help emacs-keys`
+cnoremap <C-a>  <Home>
+cnoremap <C-b>  <Left>
+cnoremap <C-f>  <Right>
+cnoremap <C-d>  <Del>
+cnoremap <C-e>  <End>
+cnoremap <M-b>  <S-Left>
+cnoremap <M-f>  <S-Right>
+cnoremap <M-d>  <S-right><Delete>
+cnoremap <C-g> <C-c>
 
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
@@ -656,14 +628,17 @@ map <leader>s? z=
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Misc
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+command! Q q  " :Q is :q
+command! W w  " :W is :w
+
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Quickly open a buffer for scribble
-map <leader>q :e ~/buffer<cr>
+" map <leader>q :e ~/buffer<cr>
 
 " Quickly open a markdown buffer for scribble
-map <leader>x :e ~/buffer.md<cr>
+" map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
