@@ -26,6 +26,10 @@
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set nocompatible              " be iMproved, required
 filetype off                  " required
+" Set leader key
+let mapleader = ","
+let maplocalleader = ","
+let g:mapleader = ","
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -52,7 +56,9 @@ Bundle 'Valloric/YouCompleteMe'
 Plugin 'Konfekt/FastFold'
 " Plugin 'vim-syntastic/syntastic' replaced by asynchronous ALE below
 Plugin 'w0rp/ale'
-Plugin 'kien/ctrlp.vim'
+" Plugin 'kien/ctrlp.vim' replaced by fzf
+Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually
+Plugin 'mileszs/ack.vim'
 Bundle 'klen/python-mode'
 "Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/nerdtree'
@@ -231,6 +237,24 @@ let g:ale_lint_delay = 2000
 " Don't run while typing, can be set to insert or normal, see :help
 " let g:ale_lint_on_text_changed = 'never'
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" fzf
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+set rtp+=~/.fzf
+" ; would be great for that
+nmap <leader>f :Buffers<CR>
+nmap <C-p> :Files<CR>
+" nmap <Leader>r :Tags<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ack/ag
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" ag installed with package manager
+if executable('ag')
+	let g:ackprg = 'ag --vimgrep'
+endif
+nmap <leader>ag :Ack! "\b<cword>\b" <CR>
+" nmap <leader>ag :Ag
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-go
@@ -279,11 +303,6 @@ filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
-
-" With a map leader it's possible to do extra key combinations
-" like <leader>w saves the current file
-let mapleader = ","
-let g:mapleader = ","
 
 " Fast saving
 nmap <leader>w :w!<cr>
@@ -540,11 +559,11 @@ map <leader>te :tabedit <c-r>=expand("%:p:h")<cr>/
 map <leader>cd :cd %:p:h<cr>:pwd<cr>
 
 " Specify the behavior when switching between buffers
-try
-  set switchbuf=useopen,usetab,newtab
-  set stal=2
-catch
-endtry
+" try
+"   set switchbuf=useopen,usetab,newtab
+"   set stal=2
+" catch
+" endtry
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
@@ -599,10 +618,7 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 "    requires ag.vim - it's much better than vimgrep/grep
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " When you press gv you Ag after the selected text
-vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
-
-" Open Ag and put the cursor in the right position
-map <leader>ag :Ag 
+" vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " When you press <leader>sr you can search and replace the selected text
 vnoremap <silent> <leader>sr :call VisualSelection('replace', '')<CR>
