@@ -1,3 +1,10 @@
+# UTILITY FUNCTIONS
+
+# Returns whether the command is present
+_has() {
+	return $( which $1 >/dev/null )
+}
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -127,6 +134,16 @@ bindkey '^ ' autosuggest-accept
 
 # remap Ctrl+u to backward-kill-line (by default is kill-whole-line)
 bindkey \^U backward-kill-line
+
+# load fzf zsh bindings; Ctrl-t to run in shell, also **<TAB>
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+
+# fzf + ag configuration
+if _has fzf && _has ag; then
+	export FZF_DEFAULT_COMMAND='ag --nocolor -g ""'
+	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+	export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
 
