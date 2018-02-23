@@ -49,22 +49,24 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'  " for :Gbrowse
+" Plugin 'tpope/vim-commentary'  " gc to comment
+" Plugin 'tpope/vim-repeat'  " . command working for a set of plugins
+" Plugin 'tpope/vim-sleuth'  " heuristically set tab and space settings
 Plugin 'airblade/vim-gitgutter'
 Plugin 'vimwiki/vimwiki'
 Plugin 'tmhedberg/SimpylFold'
-Bundle 'Valloric/YouCompleteMe'
 Plugin 'Konfekt/FastFold'
+Bundle 'Valloric/YouCompleteMe'
 " Plugin 'vim-syntastic/syntastic' replaced by asynchronous ALE below
 Plugin 'w0rp/ale'
 " Plugin 'kien/ctrlp.vim' replaced by fzf
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually
 Plugin 'mileszs/ack.vim'
-Bundle 'klen/python-mode'
-"Plugin 'jmcantrell/vim-virtualenv'
 Plugin 'scrooloose/nerdtree'
-Bundle 'jistr/vim-nerdtree-tabs'
 Plugin 'sheerun/vim-polyglot'
+Bundle 'klen/python-mode'
 Plugin 'fatih/vim-go'
+"Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'altercation/vim-colors-solarized'
 
 " Vim has undo branches and this plugin visualizes the undo tree
@@ -147,7 +149,7 @@ let g:lightline = {
 	\ }
 
 " lightline-ale icons
-let g:lightline#ale#indicator_warnings = "◆"  " \uf071 not found
+let g:lightline#ale#indicator_warnings = "▲"  " \uf071 not found
 let g:lightline#ale#indicator_errors = "✗"  " \uf05e not found
 " let g:lightline#ale#indicator_ok = "\uf00c" not found
 
@@ -201,10 +203,6 @@ let g:ycm_autoclose_preview_window_after_completion=1
 " Shortcut for goto definition
 map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
-" Toggle NerdTree shortcut
-map <F10> :NERDTreeToggle<CR>
-map <F9> <plug>NERDTreeTabsToggle<CR>
-
 " Enable Python 3 syntax checking
 let g:pymode_python = 'python3'
 let g:syntastic_python_python_exec = 'python3'
@@ -256,6 +254,15 @@ endif
 nmap <leader>ag :Ack! "\b<cword>\b" <CR>
 " nmap <leader>ag :Ag
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" NERDTree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Toggle NerdTree shortcut
+map <F9> :NERDTreeToggle<CR>
+nmap \e :NERDTreeToggle<CR>
+
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -301,8 +308,8 @@ set undolevels=700
 " skip a few lines on the screen because it's moving from line N to line N+1 in
 " the file. I want this to act more visually -- I want `down' to mean the next
 " line on the screen
-map j gj
-map k gk
+nnoremap j gj
+nnoremap k gk
 
 " Enable filetype plugins
 filetype plugin on
