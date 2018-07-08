@@ -58,14 +58,16 @@ Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
 Bundle 'Valloric/YouCompleteMe'
 " Plugin 'vim-syntastic/syntastic' replaced by asynchronous ALE below
-Plugin 'w0rp/ale'
+Plugin 'w0rp/ale'  " Asynchronous Linting Engine
 " Plugin 'kien/ctrlp.vim' replaced by fzf
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-Plugin 'sheerun/vim-polyglot'
 Bundle 'klen/python-mode'
-Plugin 'fatih/vim-go'
+Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plugin 'sheerun/vim-polyglot'
+" ^ Better leave it at the end so that it does not interfere with the above
+
 "Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'altercation/vim-colors-solarized'
 
@@ -310,10 +312,6 @@ set undolevels=700
 " line on the screen
 nnoremap j gj
 nnoremap k gk
-
-" Enable filetype plugins
-filetype plugin on
-filetype indent on
 
 " Set to auto read when a file is changed from the outside
 set autoread
