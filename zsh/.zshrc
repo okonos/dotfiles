@@ -15,7 +15,7 @@ export DISABLE_AUTO_TITLE='true'
 # export PATH=/usr/local/go/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH=/home/okonos/.oh-my-zsh
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load. Optionally, if you set this to "random"
 # it'll load a random theme each time that oh-my-zsh is loaded.
@@ -23,7 +23,7 @@ export ZSH=/home/okonos/.oh-my-zsh
 ZSH_THEME="agnoster"
 
 # Hide user@hostname when logged in as myself on local machine
-DEFAULT_USER="okonos"
+DEFAULT_USER="$USER"
 
 # set most pager to display man pages
 # export MANPAGER=most
