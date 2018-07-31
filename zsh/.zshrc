@@ -5,8 +5,11 @@ _has() {
 	return $( which $1 >/dev/null )
 }
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+mdf() {
+    pandoc -t plain "$1" | less
+}
+
+export PATH=$PATH:$HOME/.local/bin
 
 export DISABLE_AUTO_TITLE='true'
 
@@ -154,7 +157,9 @@ bindkey \^U backward-kill-line
 if _has fzf && _has ag; then
 	export FZF_DEFAULT_COMMAND='ag -g ""'
 	export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-	export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
+    # https://github.com/ggreer/the_silver_searcher/issues/1016
+    # ag does not support directory listing (like find -type d)
+	# export FZF_ALT_C_COMMAND="$FZF_DEFAULT_COMMAND"
     # from: https://github.com/junegunn/fzf/wiki/Color-schemes
     _gen_fzf_default_opts() {
       local base03="234"
@@ -191,6 +196,7 @@ fi
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
+export EDITOR='vim'
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
