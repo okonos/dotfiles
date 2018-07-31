@@ -31,6 +31,12 @@ let mapleader = ","
 let maplocalleader = ","
 let g:mapleader = ","
 
+" python startup errors workaround
+" https://unix.stackexchange.com/questions/305415/enabling-python3-on-vim-in-fedora-24#306188
+if exists('py2') && has('python')
+elseif has('python3')
+endif
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
