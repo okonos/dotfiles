@@ -5,8 +5,11 @@ _has() {
 	return $( which $1 >/dev/null )
 }
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
+mdf() {
+    pandoc -t plain "$1" | less
+}
+
+export PATH=$PATH:$HOME/.local/bin
 
 export DISABLE_AUTO_TITLE='true'
 
