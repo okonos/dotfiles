@@ -432,6 +432,9 @@ endif
 "set nowb
 "set noswapfile
 
+" the location for vim to store swap files (dir created in zshrc)
+set directory=$HOME/.vim/swapfiles//
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Text, tab and indent related

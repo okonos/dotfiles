@@ -197,6 +197,8 @@ fi
 
 # Preferred editor for local and remote sessions
 export EDITOR='vim'
+# Create directory for swapfiles
+mkdir -p "$HOME/.vim/swapfiles"
 # if [[ -n $SSH_CONNECTION ]]; then
 #   export EDITOR='vim'
 # else
