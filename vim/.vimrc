@@ -343,6 +343,45 @@ endw
 
 set timeout ttimeoutlen=20
 
+" Sessions handling
+set ssop-=options   " do not store global and local values in a session 
+set ssop-=folds     " do not store folds
+
+" if vim is opened without arguments, it creates/loads the corresponding session and saves it on exit
+" otherwise it only creates new session if one doesn't exist
+" this way you can open single files in a directory with a session without overwriting it
+" https://stackoverflow.com/questions/1642611/how-to-save-and-restore-multiple-different-sessions-in-vim/47656092#47656092
+function! MakeSession(overwrite)
+  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  if (filewritable(b:sessiondir) != 2)
+    exe 'silent !mkdir -p ' b:sessiondir
+    redraw!
+  endif
+  let b:filename = b:sessiondir . '/session.vim'
+  if a:overwrite == 0 && !empty(glob(b:filename))
+    return
+  endif
+  exe "mksession! " . b:filename
+endfunction
+
+function! LoadSession()
+  let b:sessiondir = $HOME . "/.vim/sessions" . getcwd()
+  let b:sessionfile = b:sessiondir . "/session.vim"
+  if (filereadable(b:sessionfile))
+    exe 'source ' b:sessionfile
+  else
+    echo "No session loaded."
+  endif
+endfunction
+
+" Adding automatons for when entering or leaving Vim
+if(argc() == 0)
+  au VimEnter * nested :call LoadSession()
+  au VimLeave * :call MakeSession(1)
+else
+  au VimLeave * :call MakeSession(0)
+endif
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => VIM user interface
