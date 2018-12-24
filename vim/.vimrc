@@ -42,8 +42,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " navigate seamlessly between vim and tmux splits using <ctrl-direction> hotkeys
 Plugin 'itchyny/lightline.vim'
-Plugin 'taohex/lightline-buffer'
-Plugin 'taohex/lightline-solarized'
+Plugin 'taohexxx/lightline-buffer'
+Plugin 'taohexxx/lightline-solarized'
 Plugin 'maximbaz/lightline-ale'  " warnings and errors on lightline
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-surround'
@@ -157,7 +157,7 @@ let g:lightline#ale#indicator_errors = "✗"  " \uf05e not found
 
 set showtabline=2
 " lightline-buffer ui settings
-let g:lightline_buffer_logo = ' '
+let g:lightline_buffer_logo = '⛁ '
 let g:lightline_buffer_readonly_icon = ''
 let g:lightline_buffer_modified_icon = '+'  " '✭'
 let g:lightline_buffer_git_icon = ' '
@@ -195,6 +195,7 @@ nmap <leader>gp <Plug>GitGutterPreviewHunk
 " vimwiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimwiki_map_prefix = '<leader>v'
+" let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *YouCompleteMe
