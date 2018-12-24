@@ -200,6 +200,17 @@ mkdir -p "$HOME/.vim/swapfiles"
 #   export EDITOR='mvim'
 # fi
 
+# Have less display colors
+# taken from amazon linux AMI, alternatively:
+# https://unix.stackexchange.com/questions/119/colors-in-man-pages/329092#329092
+export LESS_TERMCAP_mb=$'\E[01;31m'         # begin bold
+export LESS_TERMCAP_md=$'\E[01;38;5;208m'   # begin blink
+export LESS_TERMCAP_me=$'\E[0m'             # reset bold/blink
+export LESS_TERMCAP_se=$'\E[0m'             # reset reverse video
+export LESS_TERMCAP_ue=$'\E[0m'             # reset underline
+export LESS_TERMCAP_us=$'\E[04;38;5;111m'   # begin underline
+export GROFF_NO_SGR=1                       # for konsole and gnome-terminal
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
