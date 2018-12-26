@@ -63,10 +63,10 @@ Plugin 'w0rp/ale'  " Asynchronous Linting Engine
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-Bundle 'klen/python-mode'
+Plugin 'python-mode/python-mode'
 Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plugin 'sheerun/vim-polyglot'
-" ^ Better leave it at the end so that it does not interfere with the above
+Plugin 'sheerun/vim-polyglot' " better leave it at the end so that it does not interfere with the above
+Plugin 'ryanoasis/vim-devicons' " should be loaded as the last one
 
 "Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'altercation/vim-colors-solarized'
