@@ -32,8 +32,8 @@ DEFAULT_USER="$USER"
 # export MANPAGER=most
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=11000
+HISTSIZE=20000
+HISTFILESIZE=21000
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
