@@ -613,6 +613,11 @@ map <C-m> :cprevious<cr>
 nnoremap <leader>a :cclose<cr>
 nmap \x :cclose<cr>
 
+" Move between errors in location list
+nnoremap <M-m> :lnext<cr>
+nnoremap <M-S-m> :lprevious<cr>
+nnoremap <leader>q :lclose<cr>
+
 " Emacs-like bindings in command line -- `:help emacs-keys`
 cnoremap <C-a>  <Home>
 cnoremap <C-b>  <Left>
