@@ -32,8 +32,8 @@ DEFAULT_USER="$USER"
 # export MANPAGER=most
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
-HISTFILESIZE=11000
+HISTSIZE=20000
+HISTFILESIZE=21000
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -104,8 +104,15 @@ setopt extendedglob
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # zsh-syntax-highlighting must be last on the list!
-plugins=(git virtualenvwrapper autojump zsh-autosuggestions \
+plugins=(git virtualenvwrapper zsh-autosuggestions knife \
 	zsh-syntax-highlighting)  # must be last on the list!
+
+# fedora -- autojump installed manually
+# oh-my-zsh/plugins script does not take into account fedora's package
+[[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] && source "$HOME/.autojump/etc/profile.d/autojump.sh"
+
+autoload -U compinit && compinit -u
+
 
 # Docker compose completion
 fpath=(~/.zsh/completion $fpath)
