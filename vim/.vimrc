@@ -48,8 +48,8 @@ Plugin 'VundleVim/Vundle.vim'
 
 " navigate seamlessly between vim and tmux splits using <ctrl-direction> hotkeys
 Plugin 'itchyny/lightline.vim'
-Plugin 'taohex/lightline-buffer'
-Plugin 'taohex/lightline-solarized'
+Plugin 'taohexxx/lightline-buffer'
+Plugin 'taohexxx/lightline-solarized'
 Plugin 'maximbaz/lightline-ale'  " warnings and errors on lightline
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-surround'
@@ -69,10 +69,10 @@ Plugin 'w0rp/ale'  " Asynchronous Linting Engine
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually
 Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
-Bundle 'klen/python-mode'
+Plugin 'python-mode/python-mode'
 Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plugin 'sheerun/vim-polyglot'
-" ^ Better leave it at the end so that it does not interfere with the above
+Plugin 'sheerun/vim-polyglot' " better leave it at the end so that it does not interfere with the above
+Plugin 'ryanoasis/vim-devicons' " should be loaded as the last one
 
 "Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'altercation/vim-colors-solarized'
@@ -163,7 +163,7 @@ let g:lightline#ale#indicator_errors = "✗"  " \uf05e not found
 
 set showtabline=2
 " lightline-buffer ui settings
-let g:lightline_buffer_logo = ' '
+let g:lightline_buffer_logo = '⛁ '
 let g:lightline_buffer_readonly_icon = ''
 let g:lightline_buffer_modified_icon = '+'  " '✭'
 let g:lightline_buffer_git_icon = ' '
@@ -201,6 +201,7 @@ nmap <leader>gp <Plug>GitGutterPreviewHunk
 " vimwiki
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimwiki_map_prefix = '<leader>v'
+" let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *YouCompleteMe
@@ -340,12 +341,14 @@ command! R !./%
 
 " Allow Alt-key shortcuts
 " https://stackoverflow.com/questions/6778961/alt-key-shortcuts-not-working-on-gnome-terminal-with-vim
-let c='a'
-while c <= 'z'
-	exec "set <A-".c.">=\e".c
-	exec "imap \e".c." <A-".c.">"
-	let c = nr2char(1+char2nr(c))
-endw
+if !has('nvim')
+    let c='a'
+    while c <= 'z'
+        exec "set <A-".c.">=\e".c
+        exec "imap \e".c." <A-".c.">"
+        let c = nr2char(1+char2nr(c))
+    endw
+endif
 
 set timeout ttimeoutlen=20
 
@@ -615,6 +618,11 @@ map <C-n> :cnext<cr>
 map <C-m> :cprevious<cr>
 nnoremap <leader>a :cclose<cr>
 nmap \x :cclose<cr>
+
+" Move between errors in location list
+nnoremap <M-m> :lnext<cr>
+nnoremap <M-S-m> :lprevious<cr>
+nnoremap <leader>q :lclose<cr>
 
 " Emacs-like bindings in command line -- `:help emacs-keys`
 cnoremap <C-a>  <Home>

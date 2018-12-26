@@ -126,7 +126,9 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 source $ZSH/oh-my-zsh.sh
 
 # aws-cli completion
-[[ -s /usr/local/bin/aws_zsh_completer.sh ]] && source /usr/local/bin/aws_zsh_completer.sh
+([[ -s /usr/local/bin/aws_zsh_completer.sh ]] && source /usr/local/bin/aws_zsh_completer.sh) || \
+([[ -s $HOME/.local/bin/aws_zsh_completer.sh ]] && source $HOME/.local/bin/aws_zsh_completer.sh) || \
+echo 'aws_zsh_completer.sh not found!'
 
 # User configuration
 
@@ -205,6 +207,17 @@ mkdir -p "$HOME/.vim/swapfiles"
 #   export EDITOR='mvim'
 # fi
 
+# Have less display colors
+# taken from amazon linux AMI, alternatively:
+# https://unix.stackexchange.com/questions/119/colors-in-man-pages/329092#329092
+export LESS_TERMCAP_mb=$'\E[01;31m'         # begin bold
+export LESS_TERMCAP_md=$'\E[01;38;5;208m'   # begin blink
+export LESS_TERMCAP_me=$'\E[0m'             # reset bold/blink
+export LESS_TERMCAP_se=$'\E[0m'             # reset reverse video
+export LESS_TERMCAP_ue=$'\E[0m'             # reset underline
+export LESS_TERMCAP_us=$'\E[04;38;5;111m'   # begin underline
+export GROFF_NO_SGR=1                       # for konsole and gnome-terminal
+
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
 
@@ -222,4 +235,17 @@ mkdir -p "$HOME/.vim/swapfiles"
 #
 # Personal aliases placed in ZSH_CUSTOM/.aliases
 # (.oh-my-zsh/custom/aliases.zsh)
+
+PROFILE_STARTUP=false
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    # http://zsh.sourceforge.net/Doc/Release/Prompt-Expansion.html
+    PS4=$'%D{%M%S%.} %N:%i> '
+    exec 3>&2 2>/tmp/startlog.$$
+    setopt xtrace prompt_subst
+fi
+# Entirety of my startup file... then
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    unsetopt xtrace
+    exec 2>&3 3>&-
+fi
 
