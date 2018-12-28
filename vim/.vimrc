@@ -655,8 +655,7 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " When you press <leader>sr you can search and replace the selected text
 " vnoremap <silent> <leader>sr :call VisualSelection('replace', '')<CR>
 " <C-R>* paste register '*' (visual mode selection in this case)
-vnoremap <leader>sr <Esc>:%s/<C-R>*/
-nnoremap <leader>sR *:%s/<C-R>///gc<left><left><left>
+nnoremap <leader>sr *:%s/<C-R>///gc<left><left><left>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
 "
