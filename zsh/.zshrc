@@ -15,7 +15,7 @@ export DISABLE_AUTO_TITLE='true'
 
 # replaced by update-alternatives
 # Add go binaries to PATH
-# export PATH=/usr/local/go/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
