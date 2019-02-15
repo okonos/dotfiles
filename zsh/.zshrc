@@ -103,8 +103,8 @@ setopt extendedglob
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# zsh-syntax-highlighting must be last on the list!
-plugins=(git virtualenvwrapper zsh-autosuggestions knife \
+# NOTE: zsh-autosuggestions and zsh-syntax-highlighting have to be installed/cloned (github.com/zsh-users)
+plugins=(git virtualenvwrapper zsh-autosuggestions knife fzf \
 	zsh-syntax-highlighting)  # must be last on the list!
 
 # fedora -- autojump installed manually
@@ -152,8 +152,9 @@ bindkey '^ ' autosuggest-accept
 # remap Ctrl+u to backward-kill-line (by default is kill-whole-line)
 bindkey \^U backward-kill-line
 
+# dunno where the .fzf.zsh file comes from, added fzf to plugins above
 # load fzf zsh bindings; Ctrl-t to run in shell, also **<TAB>
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 
 # fzf + ag configuration
 if _has fzf && _has ag; then
