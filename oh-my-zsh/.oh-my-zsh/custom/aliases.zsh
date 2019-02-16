@@ -1,3 +1,6 @@
+# allows expansion of aliases with sudo
+alias sudo='nocorrect sudo '
+
 alias diff="colordiff"
 
 # prompt for confirmation when deleting more than 3 files at a time
