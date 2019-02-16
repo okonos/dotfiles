@@ -71,6 +71,7 @@ Plugin 'mileszs/ack.vim'
 Plugin 'scrooloose/nerdtree'
 Plugin 'python-mode/python-mode'
 Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plugin 'plasticboy/vim-markdown'
 Plugin 'sheerun/vim-polyglot' " better leave it at the end so that it does not interfere with the above
 Plugin 'ryanoasis/vim-devicons' " should be loaded as the last one
 
@@ -653,8 +654,9 @@ autocmd BufWrite *.coffee :call DeleteTrailingWS()
 " vnoremap <silent> gv :call VisualSelection('gv', '')<CR>
 
 " When you press <leader>sr you can search and replace the selected text
-" vnoremap <silent> <leader>sr :call VisualSelection('replace', '')<CR>
+vnoremap <silent> <leader>sr :call VisualSelection('replace', '')<CR>
 " <C-R>* paste register '*' (visual mode selection in this case)
+" vnoremap <leader>sr <Esc>:%s/<C-R>*/
 nnoremap <leader>sr *:%s/<C-R>///gc<left><left><left>
 
 " Do :help cope if you are unsure what cope is. It's super useful!
