@@ -51,7 +51,7 @@ unsetopt share_history
 setopt HIST_IGNORE_SPACE
 
 # History - ignore these commands
-HISTORY_IGNORE="(reboot|poweroff|ls|cd|fg|clear|pwd|htop|exit)"
+HISTORY_IGNORE="(reboot|poweroff|ls|cd|fg|clear|pwd|htop|task|exit)"
 
 # Uncomment and remove references to oh-my-zsh to replace agnoster powerline
 #if [[ -r ~/.local/lib/python3.5/site-packages/powerline/bindings/zsh/powerline.zsh ]]; then
