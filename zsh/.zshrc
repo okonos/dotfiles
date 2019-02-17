@@ -111,14 +111,11 @@ plugins=(git virtualenvwrapper zsh-autosuggestions knife fzf \
 # oh-my-zsh/plugins script does not take into account fedora's package
 [[ -s "$HOME/.autojump/etc/profile.d/autojump.sh" ]] && source "$HOME/.autojump/etc/profile.d/autojump.sh"
 
-autoload -U compinit && compinit -u
-
-
-# Docker compose completion
-fpath=(~/.zsh/completion $fpath)
-
 # Load compinit
 autoload -Uz compinit && compinit -i
+
+# Docker-compose and youtube-dl completions
+fpath=(~/.zsh/completion $fpath)
 
 # Disable default virtualenv prompt (replaced by agnoster's powerline prompt)
 export VIRTUAL_ENV_DISABLE_PROMPT=1
@@ -190,7 +187,6 @@ if _has fzf && _has ag; then
       "
     }
     _gen_fzf_default_opts
-
 fi
 
 # export MANPATH="/usr/local/man:$MANPATH"
