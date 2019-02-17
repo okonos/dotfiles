@@ -30,3 +30,4 @@ include /usr/share/taskwarrior/solarized-dark-256.theme
 #include /usr/share/doc/task/rc/no-color.theme
 
 uda.priority.values=H,M,,L
+urgency.uda.priority.L.coefficient=-3
