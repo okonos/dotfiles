@@ -707,6 +707,9 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
 
+" Copy to system clipboard
+map <leader>y "+y
+
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc nested source %
 
