@@ -494,6 +494,9 @@ set shiftwidth=4
 set tabstop=4
 set softtabstop=4  " Spaces 'feel' like tabs
 
+" groovy indent configuration
+autocmd FileType groovy setlocal shiftwidth=2 tabstop=2 softtabstop=2
+
 " Linebreak on 500 characters
 set lbr
 set tw=500
