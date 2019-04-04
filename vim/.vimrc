@@ -216,6 +216,7 @@ map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Enable Python 3 syntax checking
 let g:pymode_python = 'python3'
 let g:syntastic_python_python_exec = 'python3'
+let g:pymode_options_max_line_length=88
 
 " Autocomplete fix
 autocmd BufNewFile *.py :set omnifunc=python3complete#Complete
