@@ -643,6 +643,8 @@ cnoremap <C-g> <C-c>
 " window diff (:windo diff{this,off})
 nnoremap <silent> <leader>df :call ToggleDiff()<CR>
 
+nmap =js :call SortJSON()<CR>
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   exe "normal mz"
@@ -736,6 +738,11 @@ function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
     unmenu Foo
+endfunction
+
+function! SortJSON()
+    execute '%!python3 -m json.tool --sort-keys'
+    execute '%!python3 -c "import json,sys; print(json.dumps(json.load(sys.stdin), indent=2))"'
 endfunction
 
 function! VisualSelection(direction, extra_filter) range
