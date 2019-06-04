@@ -656,6 +656,9 @@ cnoremap <M-f>  <S-Right>
 cnoremap <M-d>  <S-right><Delete>
 cnoremap <C-g> <C-c>
 
+" window diff (:windo diff{this,off})
+nnoremap <silent> <leader>df :call ToggleDiff()<CR>
+
 " Delete trailing white space on save, useful for Python and CoffeeScript ;)
 func! DeleteTrailingWS()
   exe "normal mz"
@@ -736,6 +739,14 @@ autocmd! bufwritepost .vimrc nested source %
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Helper functions
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+function! ToggleDiff()
+    if &diff
+        execute 'windo diffoff'
+    else
+        execute 'windo diffthis'
+    endif
+endfunction
+
 function! CmdLine(str)
     exe "menu Foo.Bar :" . a:str
     emenu Foo.Bar
