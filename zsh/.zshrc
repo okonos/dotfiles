@@ -120,9 +120,13 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 source $ZSH/oh-my-zsh.sh
 
 # aws-cli completion
-([[ -s /usr/local/bin/aws_zsh_completer.sh ]] && source /usr/local/bin/aws_zsh_completer.sh) || \
-([[ -s $HOME/.local/bin/aws_zsh_completer.sh ]] && source $HOME/.local/bin/aws_zsh_completer.sh) || \
-echo 'aws_zsh_completer.sh not found!'
+if [[ -s /usr/local/bin/aws_zsh_completer.sh ]]; then
+    source /usr/local/bin/aws_zsh_completer.sh
+elif [[ -s $HOME/.local/bin/aws_zsh_completer.sh ]]; then
+    source $HOME/.local/bin/aws_zsh_completer.sh
+else
+    echo 'aws_zsh_completer.sh not found!'
+fi
 
 # User configuration
 
