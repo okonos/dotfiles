@@ -59,6 +59,7 @@ Plugin 'tpope/vim-rhubarb'  " for :Gbrowse
 " Plugin 'tpope/vim-repeat'  " . command working for a set of plugins
 " Plugin 'tpope/vim-sleuth'  " heuristically set tab and space settings
 Plugin 'airblade/vim-gitgutter'
+Plugin 'lambdalisue/suda.vim'  " :w !sudo tee % doest not work in neovim. Usage: :w suda://%
 Plugin 'vimwiki/vimwiki'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
