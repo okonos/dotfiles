@@ -75,7 +75,7 @@ Plugin 'plasticboy/vim-markdown'
 Plugin 'sheerun/vim-polyglot' " better leave it at the end so that it does not interfere with the above
 Plugin 'ryanoasis/vim-devicons' " should be loaded as the last one
 
-"Plugin 'jmcantrell/vim-virtualenv'
+" Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'altercation/vim-colors-solarized'
 
 " Vim has undo branches and this plugin visualizes the undo tree
@@ -223,7 +223,8 @@ autocmd BufNewFile *.py :set omnifunc=python3complete#Complete
 
 " Disable rope from python-mode bundle
 " (tends to hang for a few secs in dirs with lots of files)
-let g:pymode_rope=0
+" let g:pymode_rope=1
+" let g:pymode_rope_autoimport = 1
 
 let g:pymode_folding = 0
 
@@ -611,6 +612,24 @@ set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Remap VIM 0 to first non-blank character
 map 0 ^
+
+" Make Y copy from cursor to the end of line (more logical, as the help itself states)
+nnoremap Y y$
+
+" Run q macro with Q
+nnoremap Q @q
+
+" Arrow-like movement in insert mode
+inoremap <C-k> <Up>
+inoremap <C-j> <Down>
+inoremap <C-h> <Left>
+inoremap <C-l> <Right>
+
+" Indenting lines with Tab and Shift-Tab
+nnoremap <Tab> >>
+nnoremap <S-Tab> <<
+vnoremap <Tab> >><Esc>gv
+vnoremap <S-Tab> <<<Esc>gv
 
 " Move a line of text using ALT+[jk] or Command+[jk] on mac
 nmap <M-j> mz:m+<cr>`z
