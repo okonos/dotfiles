@@ -616,12 +616,6 @@ nnoremap Y y$
 " Run q macro with Q
 nnoremap Q @q
 
-" Arrow-like movement in insert mode
-inoremap <C-k> <Up>
-inoremap <C-j> <Down>
-inoremap <C-h> <Left>
-inoremap <C-l> <Right>
-
 " Indenting lines with Tab and Shift-Tab
 nnoremap <Tab> >>
 nnoremap <S-Tab> <<
