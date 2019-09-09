@@ -69,6 +69,7 @@ Plugin 'w0rp/ale'  " Asynchronous Linting Engine
 " Plugin 'kien/ctrlp.vim' replaced by fzf
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually
 Plugin 'mileszs/ack.vim'
+Plugin 'mbbill/undotree'
 Plugin 'scrooloose/nerdtree'
 Plugin 'python-mode/python-mode'
 Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -267,6 +268,11 @@ endif
 nmap <leader>ag :Ack! "\b<cword>\b" <CR>
 " nmap <leader>ag :Ag
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Undotree
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+nnoremap <F5> :UndotreeToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
