@@ -406,12 +406,15 @@ set wildignore=*.class,*.o,*~,*.pyc,.git  " Ignore certain files in completion
 set shortmess+=A    " Don't bother me when a swapfile exists
 set ruler           " Always show current position
 " set cmdheight=2   " Height of the command bar
+set undodir=$HOME/.vim/undodir
+set undofile    " Persistent undo, even when vim is closed and reopened. Super great when combined with the undotree plugin
 set hid			" A buffer becomes hidden when it is abandoned
 set hlsearch	" Highlight search results
 set ignorecase	" Case insensitive
+set smartcase	" When searching with capital letters the search is case sensitive
 set incsearch	" Search as you type
+set inccommand=nosplit " Neovim only, shows in realtime what changes the ex command will do (currently only supports :s)
 set infercase   " Completion recognizes capitalizaton
-set smartcase	" When searching try to be smart about cases (ALL CAPS)
 set lazyredraw	" Don't redraw while executing macros (good performance config)
 set magic		" For regular expressions turn magic on
 set showmatch	" Show matching brackets when text indicator is over them
