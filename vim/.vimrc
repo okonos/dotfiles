@@ -192,11 +192,11 @@ let g:lightline_buffer_reservelen = 20
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gitgutter
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap ]g <Plug>GitGutterNextHunk
-nmap [g <Plug>GitGutterPrevHunk
-nmap <Leader>ga <Plug>GitGutterStageHunk
-nmap <leader>gu <Plug>GitGutterUndoHunk
-nmap <leader>gp <Plug>GitGutterPreviewHunk
+nmap ]g <Plug>(GitGutterNextHunk)
+nmap [g <Plug>(GitGutterPrevHunk)
+nmap <Leader>ga <Plug>(GitGutterStageHunk)
+nmap <leader>gu <Plug>(GitGutterUndoHunk)
+nmap <leader>gp <Plug>(GitGutterPreviewHunk)
 
 " let g:gitgutter_async = 0
 
