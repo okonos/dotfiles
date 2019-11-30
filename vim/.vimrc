@@ -31,6 +31,10 @@ let mapleader = ","
 let maplocalleader = ","
 let g:mapleader = ","
 
+" Neovim related
+let g:python_host_prog = '/usr/bin/python'
+let g:python3_host_prog = '/usr/bin/python3'
+
 " python startup errors workaround
 " https://unix.stackexchange.com/questions/305415/enabling-python3-on-vim-in-fedora-24#306188
 if exists('py2') && has('python')
