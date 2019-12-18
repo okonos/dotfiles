@@ -629,9 +629,8 @@ nnoremap Y y$
 " Run q macro with Q
 nnoremap Q @q
 
-" Indenting lines with Tab and Shift-Tab
-nnoremap <Tab> >>
-nnoremap <S-Tab> <<
+" Indenting lines with Tab and Shift-Tab in visual mode only
+" in normal mode it overwrites Ctrl-I to jump forward in edit history
 vnoremap <Tab> >><Esc>gv
 vnoremap <S-Tab> <<<Esc>gv
 
