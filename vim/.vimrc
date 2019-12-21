@@ -67,7 +67,7 @@ Plugin 'lambdalisue/suda.vim'  " :w !sudo tee % doest not work in neovim. Usage:
 Plugin 'vimwiki/vimwiki'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
-Bundle 'Valloric/YouCompleteMe'
+Plugin 'ycm-core/YouCompleteMe'
 " Plugin 'vim-syntastic/syntastic' replaced by asynchronous ALE below
 Plugin 'w0rp/ale'  " Asynchronous Linting Engine
 " Plugin 'kien/ctrlp.vim' replaced by fzf
