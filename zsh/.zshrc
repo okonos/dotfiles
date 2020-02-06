@@ -15,7 +15,7 @@ export DISABLE_AUTO_TITLE='true'
 
 # replaced by update-alternatives
 # Add go binaries to PATH
-# export PATH=/usr/local/go/bin:$PATH
+export PATH=$PATH:/usr/local/go/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -150,8 +150,11 @@ bindkey '^ ' autosuggest-accept
 # remap Ctrl+u to backward-kill-line (by default is kill-whole-line)
 bindkey \^U backward-kill-line
 
-# load fzf zsh bindings; Ctrl-t to run in shell, also **<TAB>
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# Ctrl-t to run in shell, also **<TAB>
+# load fzf zsh bindings when cloned and installed manually
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+# load fzf zsh bindings when installed from package manager
+source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # fzf + ag configuration
 if _has fzf && _has ag; then

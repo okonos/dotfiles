@@ -71,7 +71,7 @@ Plugin 'ycm-core/YouCompleteMe'
 " Plugin 'vim-syntastic/syntastic' replaced by asynchronous ALE below
 Plugin 'w0rp/ale'  " Asynchronous Linting Engine
 " Plugin 'kien/ctrlp.vim' replaced by fzf
-Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually
+Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually or installed via package manager
 Plugin 'mileszs/ack.vim'
 Plugin 'mbbill/undotree'
 Plugin 'scrooloose/nerdtree'
@@ -255,7 +255,10 @@ let g:ale_lint_delay = 2000
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set rtp+=~/.fzf
+" when cloned and installed manually:
+" set rtp+=~/.fzf
+" when installed from package manager
+source /usr/share/doc/fzf/examples/fzf.vim
 " ; would be great for that
 nmap <leader>f :Buffers<CR>
 nmap <C-p> :Files<CR>
