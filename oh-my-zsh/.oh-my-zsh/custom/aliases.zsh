@@ -7,3 +7,6 @@ alias rm="rm -I --preserve-root"
 alias xclip="xclip -selection c"
 
 alias vim="nvim"
+
+# https://askubuntu.com/questions/22037/aliases-not-available-when-using-sudo
+alias sudo='sudo '
