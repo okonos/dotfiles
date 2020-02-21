@@ -107,11 +107,12 @@ setopt extendedglob
 plugins=(git virtualenvwrapper autojump zsh-autosuggestions \
 	zsh-syntax-highlighting)  # must be last on the list!
 
+
+# Docker-compose, youtube-dl, hub... completions
+fpath=(~/.zsh/completions $fpath)
+
 # Load compinit
 autoload -Uz compinit && compinit -i
-
-# Docker-compose and youtube-dl completions
-fpath=(~/.zsh/completion $fpath)
 
 
 # Disable default virtualenv prompt (replaced by agnoster's powerline prompt)
