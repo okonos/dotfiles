@@ -221,7 +221,7 @@ autocmd FileType python nmap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 " Enable Python 3 syntax checking
 let g:pymode_python = 'python3'
 let g:syntastic_python_python_exec = 'python3'
-let g:pymode_options_max_line_length=88
+let g:pymode_options_max_line_length=120
 
 " Autocomplete fix
 autocmd BufNewFile *.py :set omnifunc=python3complete#Complete
@@ -295,7 +295,9 @@ autocmd FileType go nmap <leader>b	<Plug>(go-build)
 autocmd FileType go nmap <leader>r	<Plug>(go-run)
 
 " Automatically format and rewrite import declarations
-let g:go_fmt_command = "goimports"
+let g:go_fmt_command = 'goimports'
+
+let g:go_rename_command = 'gopls'
 
 " Run checkers on save
 let g:go_metalinter_autosave = 1
