@@ -216,7 +216,7 @@ let g:vimwiki_map_prefix = '<leader>v'
 let g:ycm_autoclose_preview_window_after_completion=1
 
 " Shortcut for goto definition
-map <leader>gd  :YcmCompleter GoToDefinitionElseDeclaration<CR>
+autocmd FileType python nmap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Enable Python 3 syntax checking
 let g:pymode_python = 'python3'
