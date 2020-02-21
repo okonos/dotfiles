@@ -197,9 +197,9 @@ let g:lightline_buffer_reservelen = 20
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 nmap ]g <Plug>GitGutterNextHunk
 nmap [g <Plug>GitGutterPrevHunk
-nmap <Leader>ga <Plug>GitGutterStageHunk
-nmap <leader>gu <Plug>GitGutterUndoHunk
-nmap <leader>gp <Plug>GitGutterPreviewHunk
+nmap <Leader>ga <Plug>(GitGutterStageHunk)
+nmap <leader>gu <Plug>(GitGutterUndoHunk)
+nmap <leader>gp <Plug>(GitGutterPreviewHunk)
 
 " let g:gitgutter_async = 0
 
