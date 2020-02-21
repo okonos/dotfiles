@@ -135,6 +135,7 @@ export GOPATH=$HOME/src/go
 
 # set Go bin path
 export GOBIN=$GOPATH/bin
+export PATH=$PATH:$GOBIN
 
 # autosuggestions color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
