@@ -58,9 +58,11 @@ Plugin 'maximbaz/lightline-ale'  " warnings and errors on lightline
 Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'  " for :Gbrowse
+Plugin 'tpope/vim-rhubarb'  " fugitive extension, includes :Gbrowse and sets up :Git to use hub when installed
+Plugin 'tpope/vim-repeat'  " . command working for a set of plugins (worth for the vim-surround alone)
+" bracket maps - [n / ]n for previous/next SCM conflict, [e for exchanging line with previous lines(s), etc.
+" Plugin 'tpope/vim-unimpaired'
 " Plugin 'tpope/vim-commentary'  " gc to comment
-" Plugin 'tpope/vim-repeat'  " . command working for a set of plugins
 " Plugin 'tpope/vim-sleuth'  " heuristically set tab and space settings
 Plugin 'airblade/vim-gitgutter'
 Plugin 'lambdalisue/suda.vim'  " :w !sudo tee % doest not work in neovim. Usage: :w suda://%
@@ -68,9 +70,7 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
 Plugin 'ycm-core/YouCompleteMe'
-" Plugin 'vim-syntastic/syntastic' replaced by asynchronous ALE below
 Plugin 'w0rp/ale'  " Asynchronous Linting Engine
-" Plugin 'kien/ctrlp.vim' replaced by fzf
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually or installed via package manager
 Plugin 'mileszs/ack.vim'
 Plugin 'mbbill/undotree'
