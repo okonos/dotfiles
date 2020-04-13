@@ -248,7 +248,7 @@ let g:ycm_server_log_level = 'debug'
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ALE
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:ale_lint_delay = 2000
+let g:ale_lint_delay = 500
 " Don't run while typing, can be set to insert or normal, see :help
 " let g:ale_lint_on_text_changed = 'never'
 
