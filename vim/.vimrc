@@ -56,6 +56,7 @@ Plugin 'taohexxx/lightline-buffer'
 Plugin 'taohexxx/lightline-solarized'
 Plugin 'maximbaz/lightline-ale'  " warnings and errors on lightline
 Plugin 'christoomey/vim-tmux-navigator'
+Plugin 'kassio/neoterm'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'  " fugitive extension, includes :Gbrowse and sets up :Git to use hub when installed
@@ -553,11 +554,18 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
+" neovim terminal insert-mode exit
+tnoremap <Esc> <C-\><C-n>
+
 " Smart way to move between windows
+map <C-h> <C-W>h
 map <C-j> <C-W>j
 map <C-k> <C-W>k
-map <C-h> <C-W>h
 map <C-l> <C-W>l
+tnoremap <C-h> <C-\><C-N><C-w>h
+tnoremap <C-j> <C-\><C-N><C-w>j
+tnoremap <C-k> <C-\><C-N><C-w>k
+tnoremap <C-l> <C-\><C-N><C-w>l
 
 " Buffer management (switching)
 " nnoremap <leader>b :ls<CR>:buffer
