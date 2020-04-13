@@ -354,7 +354,7 @@ command! W w !sudo tee % > /dev/null
 vnoremap <leader>s :sort<cr>
 
 " Easier moving of code blocks (re-enter visual mode after identing)
-vnoremap < <gv 
+vnoremap < <gv
 vnoremap > >gv
 
 " :R runs current file
@@ -374,7 +374,7 @@ endif
 set timeout ttimeoutlen=20
 
 " Sessions handling
-set ssop-=options   " do not store global and local values in a session 
+set ssop-=options   " do not store global and local values in a session
 set ssop-=folds     " do not store folds
 
 " if vim is opened without arguments, it creates/loads the corresponding session and saves it on exit
@@ -507,7 +507,7 @@ set directory=$HOME/.vim/swapfiles//
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Use spaces instead of tabs
 set expandtab
- 
+
 " Be smart when using tabs ;)
 " set smarttab
 
@@ -567,13 +567,10 @@ map <leader>bd :Bclose<cr>
 " Close all the buffers
 map <leader>ba :bufdo bd<cr>
 
-" map <leader>h :bprevious<cr>
-" map <leader>l :bnext<cr>
 noremap <M-h> :bprevious<cr>
 noremap <M-l> :bnext<cr>
 
 " last accessed buffer
-" map <leader>gl :b#<cr>
 map gl :b#<cr>
 
 " Useful mappings for managing tabs
