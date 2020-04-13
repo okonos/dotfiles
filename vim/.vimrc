@@ -341,6 +341,9 @@ nnoremap k gk
 " Set to auto read when a file is changed from the outside
 set autoread
 
+" Controls the gitgutter plugin refresh rate, also number of milliseconds before the swap file is written to disk
+set updatetime=500
+
 " Fast saving
 nmap <leader>w :w!<cr>
 
