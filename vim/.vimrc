@@ -534,7 +534,8 @@ vnoremap <space> zf
 
 " Mark extra whitespace as bad, probably color it red
 highlight BadWhitespace ctermbg=red guibg=darkred
-au BufRead,BufNewFile *.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+" au BufRead,BufNewFile *.go,*.py,*.pyw,*.c,*.h match BadWhitespace /\s\+$/
+au BufRead,BufNewFile * match BadWhitespace /\s\+$/
 
 
 """"""""""""""""""""""""""""""
