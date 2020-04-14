@@ -220,21 +220,10 @@ let g:ycm_autoclose_preview_window_after_completion=1
 autocmd FileType python nmap gd :YcmCompleter GoToDefinitionElseDeclaration<CR>
 
 " Enable Python 3 syntax checking
-let g:pymode_python = 'python3'
 let g:syntastic_python_python_exec = 'python3'
-let g:pymode_options_max_line_length=120
 
 " Autocomplete fix
 autocmd BufNewFile *.py :set omnifunc=python3complete#Complete
-
-" Disable rope from python-mode bundle
-" (tends to hang for a few secs in dirs with lots of files)
-" let g:pymode_rope=1
-" let g:pymode_rope_autoimport = 1
-
-let g:pymode_folding = 0
-
-" let g:pymode_lint_options_mccabe={'complexity': 15}
 
 " YouCompleteMe JediHTTP python binary path
 let g:ycm_python_binary_path='python3'
@@ -288,6 +277,25 @@ nnoremap <F5> :UndotreeToggle<CR>
 map <F9> :NERDTreeToggle<CR>
 nmap \e :NERDTreeToggle<CR>
 
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" python-mode
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:pymode_python = 'python3'
+let g:pymode_options_max_line_length=120
+"
+" Disable rope from python-mode bundle
+" (tends to hang for a few secs in dirs with lots of files)
+" let g:pymode_rope=1
+" let g:pymode_rope_autoimport = 1
+
+let g:pymode_folding = 0
+
+let g:pymode_breakpoint_bind = '<leader>bp'
+
+" let g:pymode_lint_options_mccabe={'complexity': 15}
+
+autocmd FileType python nmap <leader>i :!isort %<cr>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-go
