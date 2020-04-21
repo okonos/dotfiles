@@ -564,6 +564,8 @@ map <silent> <leader><cr> :noh<cr>
 
 " neovim terminal insert-mode exit
 tnoremap <Esc> <C-\><C-n>
+" allow Esc to quit fzf preview window
+autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 
 " Smart way to move between windows
 map <C-h> <C-W>h
