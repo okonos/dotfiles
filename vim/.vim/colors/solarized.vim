@@ -654,7 +654,11 @@ exe "hi! DiffDelete"     .s:fmt_none   .s:fg_red    .s:bg_base02
 exe "hi! DiffText"       .s:fmt_none   .s:fg_blue   .s:bg_base02 .s:sp_blue
     endif
 endif
-exe "hi! SignColumn"     .s:fmt_none   .s:fg_base0
+" SignColumn lacks background colors setting and it defaults to ugly grey, this or alternatively setting it manually
+" to LineNr values fixes the issue (this has come up after vim-gitgutter coloring update)
+" taken from this fork: https://github.com/jwhitley/vim-colors-solarized
+hi! link SignColumn LineNr
+" exe "hi! SignColumn"     .s:fmt_none   .s:fg_base0
 exe "hi! Conceal"        .s:fmt_none   .s:fg_blue   .s:bg_none
 exe "hi! SpellBad"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_red
 exe "hi! SpellCap"       .s:fmt_curl   .s:fg_none   .s:bg_none    .s:sp_violet
