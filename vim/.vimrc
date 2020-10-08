@@ -73,7 +73,7 @@ Plugin 'vimwiki/vimwiki'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
 Plugin 'ycm-core/YouCompleteMe'
-Plugin 'w0rp/ale'  " Asynchronous Linting Engine
+Plugin 'dense-analysis/ale'  " Asynchronous Linting Engine
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually or installed via package manager
 Plugin 'mileszs/ack.vim'
 Plugin 'mbbill/undotree'
