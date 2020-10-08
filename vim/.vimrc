@@ -255,9 +255,9 @@ let g:ale_python_mypy_options = '--show-error-codes'
 " fzf
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " when cloned and installed manually:
-" set rtp+=~/.fzf
+set rtp+=~/.fzf
 " when installed from package manager
-source /usr/share/doc/fzf/examples/fzf.vim
+" source /usr/share/doc/fzf/examples/fzf.vim
 " ; would be great for that
 nmap <leader>f :Buffers<CR>
 nmap <C-p> :Files<CR>

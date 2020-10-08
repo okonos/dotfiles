@@ -165,9 +165,9 @@ bindkey \^U backward-kill-line
 
 # Ctrl-t to run in shell, also **<TAB>
 # load fzf zsh bindings when cloned and installed manually
-# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # load fzf zsh bindings when installed from package manager
-source /usr/share/doc/fzf/examples/key-bindings.zsh
+# source /usr/share/doc/fzf/examples/key-bindings.zsh
 
 # fzf + ag configuration
 if _has fzf && _has ag; then
