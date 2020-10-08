@@ -118,16 +118,27 @@ autoload -Uz compinit && compinit -i
 # Disable default virtualenv prompt (replaced by agnoster's powerline prompt)
 export VIRTUAL_ENV_DISABLE_PROMPT=1
 
+export VIRTUALENVWRAPPER_PYTHON=$(which python3)
+export WORKON_HOME=~/.local/share/virtualenvs
+
+if [ -d "$HOME/.pyenv" ]; then
+	export PATH="$HOME/.pyenv/bin:$PATH"
+	eval "$(pyenv init -)"
+	eval "$(pyenv virtualenv-init -)"
+fi
+
 source $ZSH/oh-my-zsh.sh
 
-# aws-cli completion
-if [[ -s /usr/local/bin/aws_zsh_completer.sh ]]; then
-    source /usr/local/bin/aws_zsh_completer.sh
-elif [[ -s $HOME/.local/bin/aws_zsh_completer.sh ]]; then
-    source $HOME/.local/bin/aws_zsh_completer.sh
-else
-    echo 'aws_zsh_completer.sh not found!'
-fi
+# aws-cli v2 completion
+[[ -s /usr/local/aws-cli/v2/current/bin/aws_completer ]] && complete -C '/usr/local/aws-cli/v2/current/bin/aws_completer' aws
+    # export PATH=/usr/local/aws-cli/v2/current/bin/aws_completer:$PATH
+# if [[ -s /usr/local/bin/aws_zsh_completer.sh ]]; then
+#     source /usr/local/bin/aws_zsh_completer.sh
+# elif [[ -s $HOME/.local/bin/aws_zsh_completer.sh ]]; then
+#     source $HOME/.local/bin/aws_zsh_completer.sh
+# else
+#     echo 'aws_zsh_completer.sh not found!'
+# fi
 
 # User configuration
 
