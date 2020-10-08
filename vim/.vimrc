@@ -41,6 +41,8 @@ if exists('py2') && has('python')
 elseif has('python3')
 endif
 
+let g:polyglot_disabled = ['python', 'go']
+
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
@@ -283,7 +285,7 @@ nmap \e :NERDTreeToggle<CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:pymode_python = 'python3'
 let g:pymode_options_max_line_length=120
-"
+
 " Disable rope from python-mode bundle
 " (tends to hang for a few secs in dirs with lots of files)
 " let g:pymode_rope=1
@@ -327,7 +329,7 @@ let g:go_highlight_operators	= 1
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-polyglot
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:polyglot_disabled = ['python', 'go']
+" g:polyglot_disabled set before loading the plugin
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
