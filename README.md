@@ -1,6 +1,14 @@
 # dotfiles
 
-Managed with [GNU Stow](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html)
+Managed with [GNU Stow](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html).
+
+Running ansible:
+
+```shell
+ansible-playbook --ask-become-pass local.yml [-v]
+```
+
+Alternatively [ansible-pull](https://docs.ansible.com/ansible/latest/cli/ansible-pull.html) can be used.
 
 # Things to memorize:
 

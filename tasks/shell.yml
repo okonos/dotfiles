@@ -1,0 +1,115 @@
+- name: Install packages
+  become: yes
+  apt: name={{item}}
+  loop:
+    - autojump
+    - cmake
+    - colordiff
+    - curl
+    - htop
+    - ncdu
+    - python3-pip
+    - rclone
+    - silversearcher-ag
+    - stow
+    - taskwarrior
+    - tmux
+    - zsh
+
+- name: Stow dotfiles
+  command:
+    cmd: stow {{ item.name }}
+    chdir: ~/dotfiles
+    creates: {{ item.creates }}
+  loop:
+    - { name: nvim, creates: ~/.config/nvim }
+    - { name: oh-my-zsh, creates: ~/.oh-my-zsh/custom/aliases.zsh }
+    - { name: taskwarrior, creates: ~/.taskrc }
+    - { name: tmux, creates: ~/.tmux.conf }
+    - { name: vim, creates: ~/.vimrc }
+    - { name: zsh, creates: ~/.zshrc }
+
+- pip:
+    name:
+      - ipython
+      - virtualenvwrapper
+
+- name: Register path to zsh binary
+  command: which zsh
+  register: zsh_path
+  changed_when: false
+
+- name: Change shell to zsh
+  become: yes
+  user:
+    name: "{{ ansible_user_id }}"
+    shell: "{{ zsh_path.stdout }}"
+
+- name: Check if oh-my-zsh is installed
+  stat:
+    path: ~/.oh-my-zsh/tools/install.sh
+  register: ohmyzsh_stat
+
+- name: Install oh-my-zsh
+  vars:
+    script_dest: /tmp/install.sh
+  block:
+    - name: Download install script
+      get_url:
+        url: 'https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh'
+        dest: /tmp/install.sh
+    - name: Run install script
+      command: /tmp/install.sh
+  when: not ohmyzsh_stat.stat.exists
+
+- name: Install fzf
+  block:
+    - name: Clone fzf repository
+      git:
+        repo: 'https://github.com/junegunn/fzf.git'
+        depth: 1
+        dest: ~/.fzf
+      register: result
+    - name: Run fzf install script
+      command: ~/.fzf/install
+      when: result is changed
+
+- name: Clone tmux-themepack
+  git:
+    repo: 'https://github.com/jimeh/tmux-themepack'
+    dest: ~/.config/tmux-themepack
+
+- name: Install dircolors-solarized
+  git:
+    repo: 'https://github.com/seebi/dircolors-solarized'
+    dest: ~/.config/dircolors-solarized
+
+- name: Install zsh-autosuggestions
+  git:
+    repo: 'https://github.com/zsh-users/zsh-autosuggestions'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions
+
+- name: Install zsh-syntax-highlighting
+  git:
+    repo: 'https://github.com/zsh-users/zsh-syntax-highlighting.git'
+    dest: ~/.oh-my-zsh/custom/plugins/zsh-syntax-highlighting
+
+# https://www.programmingfonts.org
+- name: Install Nerd fonts
+  vars:
+    font_dir: ~/.local/share/fonts
+  block:
+    - name: Create {{ font_dir }}
+      file:
+        path: "{{ font_dir }}"
+        state: directory
+    - name: Install selected fonts
+      get_url:
+        url: "{{ item.url }}"
+        dest: "{{ font_dir }}/{{ item.name }}"
+      loop:
+        - { name: 'DejaVu-Sans-Mono-Nerd-Font-Complete.ttf', url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/DejaVuSansMono/Regular/complete/DejaVu%20Sans%20Mono%20Nerd%20Font%20Complete.ttf' }
+        - { name: 'Fira-Code-Regular-Nerd-Font-Complete.ttf', url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/FiraCode/Regular/complete/Fira%20Code%20Regular%20Nerd%20Font%20Complete.ttf' }
+        - { name: 'InconsolataGo-Nerd-Font-Complete.ttf', url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/InconsolataGo/Regular/complete/InconsolataGo%20Nerd%20Font%20Complete.ttf' }
+        - { name: 'Source-Code-Pro-Nerd-Font-Complete.ttf', url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/SourceCodePro/Regular/complete/Sauce%20Code%20Pro%20Nerd%20Font%20Complete.ttf' }
+        - { name: 'Hack-Regular-Nerd-Font-Complete.ttf', url: 'https://github.com/ryanoasis/nerd-fonts/raw/master/patched-fonts/Hack/Regular/complete/Hack%20Regular%20Nerd%20Font%20Complete.ttf' }

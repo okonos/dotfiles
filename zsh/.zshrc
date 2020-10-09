@@ -59,7 +59,7 @@ HISTORY_IGNORE="(reboot|poweroff|ls|cd|fg|clear|pwd|htop|task|exit)"
 #fi
 
 # Better ls colors
-eval `dircolors ~/.solarized/dircolors.256dark`
+eval `dircolors ~/.config/dircolors-solarized/dircolors.256dark`
 
 # zmv autoload
 autoload -U zmv

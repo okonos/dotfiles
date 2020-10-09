@@ -1,0 +1,17 @@
+---
+- hosts: localhost
+  pre_tasks:
+    - name: update repositories
+      become: true
+      apt: update_cache=yes
+      changed_when: false
+
+      # TODO
+      # caps esc keyboard shortcut
+      # terminal keyboard shortcut
+      # gnome night light
+      # ew. ustawienie liczby wyświetlanych katalogów w promptcie agnostera
+  tasks:
+    - include: tasks/shell.yml
+    - include: tasks/vim.yml
+    - include: tasks/desktop.yml

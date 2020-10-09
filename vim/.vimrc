@@ -263,6 +263,12 @@ nmap <leader>f :Buffers<CR>
 nmap <C-p> :Files<CR>
 " nmap <Leader>r :Tags<CR>
 
+if exists('$TMUX')
+    let g:fzf_layout = { 'tmux': '-d25%' }
+else  " popup window
+    let g:fzf_layout = { 'window': { 'width': 0.9, 'height': 0.6 } }
+endif
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " ack/ag
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

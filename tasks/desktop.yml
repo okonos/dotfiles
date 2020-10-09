@@ -1,0 +1,36 @@
+- name: Install packages
+  become: yes
+  apt: name={{item}}
+  loop:
+    - gnome-tweak-tool
+    - keepassxc
+    - lm-sensors
+    - python3-psutil  # required for dconf tasks
+    - telegram-desktop
+
+- name: Check gtk-theme set
+  dconf:
+    key: "/org/gnome/desktop/interface/gtk-theme"
+    state: read
+  register: theme_set
+- name: Set Yaru-MATE theme
+  vars:
+    theme_name: "'Yaru-MATE'"
+  block:
+    - name: Clone Yaru-Colors
+      git:
+        repo: 'https://github.com/Jannomag/Yaru-Colors'
+        dest: /tmp/yaru-colors
+    - name: Copy themes
+      command: cp -ar /tmp/yaru-colors/Themes/{{ theme_name }} /tmp/yaru-colors/Themes/{{ theme_name }}-dark /usr/share/themes
+    - name: Copy icons
+      command: cp -ar /tmp/yaru-colors/Icons/{{ theme_name }} /usr/share/icons
+    - name: Set GTK theme
+      dconf:
+        key: "/org/gnome/desktop/interface/gtk-theme"
+        value: "{{ theme_name }}"
+    - name: Set icon theme
+      dconf:
+        key: "/org/gnome/desktop/interface/icon-theme"
+        value: "{{ theme_name }}"
+  when: theme_name in theme_set['value']

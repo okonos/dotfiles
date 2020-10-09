@@ -1,0 +1,16 @@
+- name: Install packages
+  become: yes
+  apt: name={{item}}
+  loop:
+    - neovim
+    - vim
+
+- name: Install Vundle
+  git:
+    repo: 'https://github.com/VundleVim/Vundle.vim.git'
+    dest: ~/.vim/bundle/Vundle.vim
+
+- name: Install plugins
+  command:
+    cmd: 'vim +PluginInstall +qall'
+    creates: ~/.vim/bundle/vim-go
