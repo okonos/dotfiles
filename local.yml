@@ -7,11 +7,11 @@
       changed_when: false
 
       # TODO
-      # caps esc keyboard shortcut
-      # terminal keyboard shortcut
-      # gnome night light
       # ew. ustawienie liczby wyświetlanych katalogów w promptcie agnostera
   tasks:
     - include: tasks/shell.yml
+      tags: shell
     - include: tasks/vim.yml
+      tags: vim
     - include: tasks/desktop.yml
+      tags: desktop

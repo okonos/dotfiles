@@ -23,8 +23,10 @@
         dest: /tmp/yaru-colors
     - name: Copy themes
       command: cp -ar /tmp/yaru-colors/Themes/{{ theme_name }} /tmp/yaru-colors/Themes/{{ theme_name }}-dark /usr/share/themes
+      become: yes
     - name: Copy icons
       command: cp -ar /tmp/yaru-colors/Icons/{{ theme_name }} /usr/share/icons
+      become: yes
     - name: Set GTK theme
       dconf:
         key: "/org/gnome/desktop/interface/gtk-theme"
@@ -33,4 +35,52 @@
       dconf:
         key: "/org/gnome/desktop/interface/icon-theme"
         value: "{{ theme_name }}"
-  when: theme_name in theme_set['value']
+  when: theme_set['value'] == None or theme_name not in theme_set['value']
+
+# All custom shortcuts must be added to an array
+- name: Enable custom keybindings
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings"
+    value: "['/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/']"
+
+- name: Set terminal shortcut name
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/name"
+    value: "'Launch terminal with tmux'"
+- name: Set terminal shortcut command
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
+    value: "'gnome-terminal -e tmux'"
+- name: Set terminal shortcut binding
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
+    value: "'<Primary><Alt>t'"
+
+- name: Disable terminal bell
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/audible-bell"
+    value: "false"
+
+- name: Set terminal scrollback lines
+  dconf:
+    key: "/org/gnome/terminal/legacy/profiles:/:b1dcc9dd-5262-4d8d-a863-c897e6d979b9/scrollback-lines"
+    value: "1000000"
+
+- name: Make Caps Lock an additional Esc
+  dconf:
+    key: "/org/gnome/desktop/input-sources/xkb-options"
+    value: "['caps:escape']"
+
+- name: Enable Night Light
+  dconf:
+    key: "/org/gnome/settings-daemon/plugins/color/night-light-enabled"
+    value: "true"
+
+- name: Auto-hide the Dock
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/dock-fixed"
+    value: "false"
+- name: Auto-hide the Dock (preferred-monitor)
+  dconf:
+    key: "/org/gnome/shell/extensions/dash-to-dock/preferred-monitor"
+    value: "0"

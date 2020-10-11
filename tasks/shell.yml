@@ -7,27 +7,16 @@
     - colordiff
     - curl
     - htop
+    - jq
     - ncdu
     - python3-pip
     - rclone
     - silversearcher-ag
     - stow
     - taskwarrior
+    - tig
     - tmux
     - zsh
-
-- name: Stow dotfiles
-  command:
-    cmd: stow {{ item.name }}
-    chdir: ~/dotfiles
-    creates: {{ item.creates }}
-  loop:
-    - { name: nvim, creates: ~/.config/nvim }
-    - { name: oh-my-zsh, creates: ~/.oh-my-zsh/custom/aliases.zsh }
-    - { name: taskwarrior, creates: ~/.taskrc }
-    - { name: tmux, creates: ~/.tmux.conf }
-    - { name: vim, creates: ~/.vimrc }
-    - { name: zsh, creates: ~/.zshrc }
 
 - pip:
     name:
@@ -45,9 +34,19 @@
     name: "{{ ansible_user_id }}"
     shell: "{{ zsh_path.stdout }}"
 
+# Needs to happen before installing oh-my-zsh, otherwise oh-my-zsh will install its own zshrc
+# and stow will refuse to work.
+# On the other hand oh-my-zsh refuses to install when '.oh-my-zsh' directory exists.
+- name: Stow zsh
+  tags: stow
+  command:
+    cmd: stow zsh
+    chdir: ~/dotfiles
+    creates: ~/.zshrc
+
 - name: Check if oh-my-zsh is installed
   stat:
-    path: ~/.oh-my-zsh/tools/install.sh
+    path: ~/.oh-my-zsh
   register: ohmyzsh_stat
 
 - name: Install oh-my-zsh
@@ -57,10 +56,24 @@
     - name: Download install script
       get_url:
         url: 'https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh'
-        dest: /tmp/install.sh
+        dest: "{{ script_dest }}"
+        mode: 'u+rwx'
     - name: Run install script
-      command: /tmp/install.sh
+      shell: "{{ script_dest }} --keep-zshrc"
   when: not ohmyzsh_stat.stat.exists
+
+- name: Stow dotfiles
+  tags: stow
+  command:
+    cmd: stow {{ item.name }}
+    chdir: ~/dotfiles
+    creates: "{{ item.creates }}"
+  loop:
+    - { name: nvim, creates: ~/.config/nvim }
+    - { name: oh-my-zsh, creates: ~/.oh-my-zsh/custom/aliases.zsh }
+    - { name: taskwarrior, creates: ~/.taskrc }
+    - { name: tmux, creates: ~/.tmux.conf }
+    - { name: vim, creates: ~/.vimrc }
 
 - name: Install fzf
   block:
