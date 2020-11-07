@@ -63,9 +63,9 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'  " fugitive extension, includes :Gbrowse and sets up :Git to use hub when installed
 Plugin 'tpope/vim-repeat'  " . command working for a set of plugins (worth for the vim-surround alone)
+Plugin 'tpope/vim-commentary'  " gc to comment
 " bracket maps - [n / ]n for previous/next SCM conflict, [e for exchanging line with previous lines(s), etc.
 " Plugin 'tpope/vim-unimpaired'
-" Plugin 'tpope/vim-commentary'  " gc to comment
 " Plugin 'tpope/vim-sleuth'  " heuristically set tab and space settings
 Plugin 'airblade/vim-gitgutter'
 Plugin 'lambdalisue/suda.vim'  " :w !sudo tee % doest not work in neovim. Usage: :w suda://%
