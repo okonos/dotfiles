@@ -64,6 +64,7 @@ Plugin 'tpope/vim-fugitive'
 Plugin 'tpope/vim-rhubarb'  " fugitive extension, includes :Gbrowse and sets up :Git to use hub when installed
 Plugin 'tpope/vim-repeat'  " . command working for a set of plugins (worth for the vim-surround alone)
 Plugin 'tpope/vim-commentary'  " gc to comment
+Plugin 'tpope/vim-rsi'  " readline bindings in insert and command line mode
 " bracket maps - [n / ]n for previous/next SCM conflict, [e for exchanging line with previous lines(s), etc.
 " Plugin 'tpope/vim-unimpaired'
 " Plugin 'tpope/vim-sleuth'  " heuristically set tab and space settings
@@ -76,7 +77,7 @@ Plugin 'ycm-core/YouCompleteMe'
 Plugin 'dense-analysis/ale'  " Asynchronous Linting Engine
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually or installed via package manager
 Plugin 'mileszs/ack.vim'
-Plugin 'mbbill/undotree'
+Plugin 'mbbill/undotree'  " Vim has undo branches and this plugin visualizes the undo tree
 Plugin 'scrooloose/nerdtree'
 Plugin 'python-mode/python-mode'
 Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -85,9 +86,6 @@ Plugin 'ryanoasis/vim-devicons' " should be loaded as the last one
 
 " Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'altercation/vim-colors-solarized'
-
-" Vim has undo branches and this plugin visualizes the undo tree
-" https://github.com/mbbill/undotree
 
 " " The following are examples of different formats supported.
 " " Keep Plugin commands between vundle#begin/end.
