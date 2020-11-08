@@ -168,7 +168,10 @@ let g:lightline#ale#indicator_warnings = "▲"  " \uf071 not found
 let g:lightline#ale#indicator_errors = "✗"  " \uf05e not found
 " let g:lightline#ale#indicator_ok = "\uf00c" not found
 
+" Always show the tab and status lines
 set showtabline=2
+set laststatus=2
+
 " lightline-buffer ui settings
 let g:lightline_buffer_logo = '⛁ '
 let g:lightline_buffer_readonly_icon = ''
@@ -386,9 +389,6 @@ vnoremap <leader>s :sort<cr>
 " Easier moving of code blocks (re-enter visual mode after identing)
 vnoremap < <gv
 vnoremap > >gv
-
-" :R runs current file
-command! R !./%
 
 " Allow Alt-key shortcuts
 " https://stackoverflow.com/questions/6778961/alt-key-shortcuts-not-working-on-gnome-terminal-with-vim
@@ -637,29 +637,11 @@ map <leader>cd :cd %:p:h<cr>:pwd<cr>
 " Specify the behavior when switching between buffers
 " try
 "   set switchbuf=useopen,usetab,newtab
-"   set stal=2
 " catch
 " endtry
 
 " Return to last edit position when opening files (You want this!)
 au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
-
-" Go to Definition
-" http://tartley.com/?p=1277
-map <f12> :!start /min ctags -R .<cr>
-
-""""""""""""""""""""""""""""""
-" => Status line
-""""""""""""""""""""""""""""""
-" Replaced with lightline-vim
-" set rtp+=/usr/local/lib/python3.5/dist-packages/powerline/bindings/vim
-" /home/okonos/.local/lib/python3.5/site-packages/powerline/bindings/vim/
-
-" Always show the status line
-set laststatus=2
-
-" Format the status line
-set statusline=\ %{HasPaste()}%F%m%r%h\ %w\ \ CWD:\ %r%{getcwd()}%h\ \ \ Line:\ %l\ \ Column:\ %c
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -772,12 +754,6 @@ command! W w  " :W is :w
 
 " Remove the Windows ^M - when the encodings gets messed up
 noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
-
-" Quickly open a buffer for scribble
-" map <leader>q :e ~/buffer<cr>
-
-" Quickly open a markdown buffer for scribble
-" map <leader>x :e ~/buffer.md<cr>
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
