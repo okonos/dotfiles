@@ -50,7 +50,7 @@
 - name: Set terminal shortcut command
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/command"
-    value: "'gnome-terminal -e tmux'"
+    value: "'gnome-terminal --hide-menubar -e tmux'"
 - name: Set terminal shortcut binding
   dconf:
     key: "/org/gnome/settings-daemon/plugins/media-keys/custom-keybindings/custom0/binding"
