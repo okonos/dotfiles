@@ -313,6 +313,13 @@ let g:pymode_breakpoint_bind = '<leader>bp'
 
 autocmd FileType python nmap <leader>i :!isort %<cr>
 
+" neoterm bindings
+autocmd FileType python nmap <leader>trf :TREPLSendFile<cr>
+" gx{text-object}
+autocmd FileType python nmap gx <Plug>(neoterm-repl-send)
+autocmd FileType python xmap gx <Plug>(neoterm-repl-send)
+autocmd FileType python nmap gxx <Plug>(neoterm-repl-send-line)
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-go
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
