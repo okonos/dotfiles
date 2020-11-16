@@ -590,9 +590,12 @@ vnoremap <silent> # :<C-u>call VisualSelection('', '')<CR>?<C-R>=@/<CR><CR>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
-" neovim terminal insert-mode exit
+" Exit Neovim terminal insert-mode with Esc
 tnoremap <Esc> <C-\><C-n>
-" allow Esc to quit fzf preview window
+" Start Neovim terminal in insert mode
+autocmd BufEnter term://* startinsert
+
+" Allow Esc to quit fzf preview window
 autocmd FileType fzf tnoremap <buffer> <Esc> <Esc>
 
 " Smart way to move between windows
