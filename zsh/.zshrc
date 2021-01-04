@@ -104,7 +104,12 @@ setopt extendedglob
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
 # zsh-syntax-highlighting must be last on the list!
-plugins=(git virtualenvwrapper autojump zsh-autosuggestions \
+plugins=(
+    git
+    virtualenvwrapper
+    autojump
+    poetry
+    zsh-autosuggestions
 	zsh-syntax-highlighting)  # must be last on the list!
 
 
