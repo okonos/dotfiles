@@ -109,7 +109,6 @@ plugins=(
     virtualenvwrapper
     autojump
     golang
-    poetry
     zsh-autosuggestions
 	zsh-syntax-highlighting)  # must be last on the list!
 
