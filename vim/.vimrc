@@ -331,17 +331,23 @@ autocmd FileType python nmap gxx <Plug>(neoterm-repl-send-line)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 autocmd FileType go nmap <leader>b	<Plug>(go-build)
 autocmd FileType go nmap <leader>r	<Plug>(go-run)
+autocmd FileType go nmap <leader>i  <Plug>(go-info)
+autocmd FileType go nmap <leader>t  <Plug>(go-test)
+autocmd FileType go nmap <leader>er <Plug>(go-iferr)
+
+" :GoDecls and :GoDeclsDir show all function and type declarations for the current file and directory respectively
 
 " Automatically format and rewrite import declarations
 let g:go_fmt_command = 'goimports'
+
+let g:go_metalinter_command = 'gopls'
+let g:go_gopls_staticcheck = 1
 
 let g:go_rename_command = 'gopls'
 
 " Run checkers on save
 let g:go_metalinter_autosave = 1
 
-" Run :GoInfo
-autocmd FileType go nmap <leader>i <Plug>(go-info)
 " Show info whenever cursor is moved
 let g:go_auto_type_info = 1
 
