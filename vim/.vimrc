@@ -73,6 +73,7 @@ Plugin 'lambdalisue/suda.vim'  " :w !sudo tee % doest not work in neovim. Usage:
 Plugin 'vimwiki/vimwiki'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
+Plugin 'SirVer/ultisnips'
 Plugin 'ycm-core/YouCompleteMe'
 Plugin 'dense-analysis/ale'  " Asynchronous Linting Engine
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually or installed via package manager
@@ -212,6 +213,11 @@ nmap <leader>gp <Plug>(GitGutterPreviewHunk)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimwiki_map_prefix = '<leader>v'
 " let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Ultisnips
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:UltiSnipsExpandTrigger='<c-k>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *YouCompleteMe
