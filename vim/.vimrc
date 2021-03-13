@@ -627,7 +627,7 @@ tnoremap <C-l> <C-\><C-N><C-w>l
 map <leader>bd :Bclose<cr>
 
 " Close all the buffers
-map <leader>ba :bufdo bd<cr>
+map <leader>ba :%bdelete<cr>
 
 noremap <M-h> :bprevious<cr>
 noremap <M-l> :bnext<cr>
