@@ -391,13 +391,8 @@ set updatetime=500
 " Fast saving
 nmap <leader>w :w!<cr>
 
-" Copy and paste to system clipboard
-vmap <Leader>y "+y
-vmap <Leader>d "+d
-nmap <Leader>p "+p
-nmap <Leader>P "+P
-vmap <Leader>p "+p
-vmap <Leader>P "+P
+" ALWAYS use the clipboard for ALL operations (instead of interacting with the '+' and/or '*' registers explicitly)
+set clipboard+=unnamedplus
 
 " :W sudo saves the file (useful for handling the permission-denied error)
 command! W w !sudo tee % > /dev/null
@@ -779,9 +774,6 @@ noremap <Leader>m mmHmt:%s/<C-V><cr>//ge<cr>'tzt'm
 
 " Toggle paste mode on and off
 map <leader>pp :setlocal paste!<cr>
-
-" Copy to system clipboard
-map <leader>y "+y
 
 " Automatic reloading of .vimrc
 autocmd! bufwritepost .vimrc nested source %
