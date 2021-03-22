@@ -284,8 +284,7 @@ if executable('ag')
 	let g:ackprg = 'ag --vimgrep'
 endif
 nmap <leader>ag :Ack! "\b<cword>\b" <CR>
-" nmap <leader>ag :Ag
-
+vmap <leader>ag y:Ack! "\b<C-R>"\b" <CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Undotree
