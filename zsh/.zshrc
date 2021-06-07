@@ -123,6 +123,8 @@ plugins=(
 # Docker-compose, youtube-dl, hub... completions
 fpath=(~/.zsh/completions $fpath)
 
+source $ZSH/oh-my-zsh.sh
+
 # Load compinit
 autoload -Uz compinit && compinit -i
 
@@ -133,13 +135,13 @@ export VIRTUAL_ENV_DISABLE_PROMPT=1
 export VIRTUALENVWRAPPER_PYTHON=$(which python3)
 export WORKON_HOME=~/.local/share/virtualenvs
 
-if [ -d "$HOME/.pyenv" ]; then
-	export PATH="$HOME/.pyenv/bin:$PATH"
+export PYENV_ROOT="$HOME/.pyenv"
+if [ -d "$PYENV_ROOT" ]; then
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
 fi
-
-source $ZSH/oh-my-zsh.sh
 
 # aws-cli v2 completion
 [[ -s /usr/local/aws-cli/v2/current/bin/aws_completer ]] && complete -C '/usr/local/aws-cli/v2/current/bin/aws_completer' aws
