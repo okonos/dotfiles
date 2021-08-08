@@ -1,4 +1,5 @@
 alias diff="colordiff"
+alias open="xdg-open"
 
 # prompt for confirmation when deleting more than 3 files at a time
 alias rm="rm -I --preserve-root"
