@@ -16,13 +16,10 @@ mdf() {
     pandoc -t plain "$1" | less
 }
 
-export PATH=$PATH:$HOME/.local/bin
+typeset -U path
+path=($HOME/bin $HOME/.local/bin $path)
 
 export DISABLE_AUTO_TITLE='true'
-
-# replaced by update-alternatives
-# Add go binaries to PATH
-export PATH=$PATH:/usr/local/go/bin
 
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
@@ -137,7 +134,7 @@ export WORKON_HOME=~/.local/share/virtualenvs
 
 export PYENV_ROOT="$HOME/.pyenv"
 if [ -d "$PYENV_ROOT" ]; then
-    export PATH="$PYENV_ROOT/bin:$PATH"
+    path=($PYENV_ROOT/bin $path)
     eval "$(pyenv init --path)"
 	eval "$(pyenv init -)"
 	eval "$(pyenv virtualenv-init -)"
@@ -145,7 +142,6 @@ fi
 
 # aws-cli v2 completion
 [[ -s /usr/local/aws-cli/v2/current/bin/aws_completer ]] && complete -C '/usr/local/aws-cli/v2/current/bin/aws_completer' aws
-    # export PATH=/usr/local/aws-cli/v2/current/bin/aws_completer:$PATH
 # if [[ -s /usr/local/bin/aws_zsh_completer.sh ]]; then
 #     source /usr/local/bin/aws_zsh_completer.sh
 # elif [[ -s $HOME/.local/bin/aws_zsh_completer.sh ]]; then
@@ -156,12 +152,9 @@ fi
 
 # User configuration
 
-# set GOPATH
 export GOPATH=$HOME/src/go
-
-# set Go bin path
 export GOBIN=$GOPATH/bin
-export PATH=$PATH:$GOBIN
+path=($GOBIN /usr/local/go/bin $path)
 
 # autosuggestions color
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=242'
