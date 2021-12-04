@@ -694,17 +694,6 @@ nnoremap <M-m> :lnext<cr>
 nnoremap <M-S-m> :lprevious<cr>
 nnoremap <leader>q :lclose<cr>
 
-" Emacs-like bindings in command line -- `:help emacs-keys`
-cnoremap <C-a>  <Home>
-cnoremap <C-b>  <Left>
-cnoremap <C-f>  <Right>
-cnoremap <C-d>  <Del>
-cnoremap <C-e>  <End>
-cnoremap <M-b>  <S-Left>
-cnoremap <M-f>  <S-Right>
-cnoremap <M-d>  <S-right><Delete>
-cnoremap <C-g> <C-c>
-
 " window diff (:windo diff{this,off})
 nnoremap <silent> <leader>df :call ToggleDiff()<CR>
 
