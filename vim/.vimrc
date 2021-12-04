@@ -78,7 +78,7 @@ Plugin 'ycm-core/YouCompleteMe'
 Plugin 'dense-analysis/ale'  " Asynchronous Linting Engine
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually or installed via package manager
 Plugin 'mileszs/ack.vim'
-Plugin 'mbbill/undotree'  " Vim has undo branches and this plugin visualizes the undo tree
+Plugin 'simnalamburt/vim-mundo'  " Vim undo tree visualizer
 Plugin 'scrooloose/nerdtree'
 Plugin 'python-mode/python-mode'
 Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
@@ -289,7 +289,7 @@ vmap <leader>ag y:Ack! "\b<C-R>"\b" <CR>
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Undotree
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nnoremap <F5> :UndotreeToggle<CR>
+nnoremap <F5> :MundoToggle<CR>
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " NERDTree
