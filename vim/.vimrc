@@ -59,6 +59,7 @@ Plugin 'tpope/vim-rhubarb'  " fugitive extension, includes :Gbrowse and sets up 
 Plugin 'tpope/vim-repeat'  " . command working for a set of plugins (worth for the vim-surround alone)
 Plugin 'tpope/vim-commentary'  " gc to comment
 Plugin 'tpope/vim-rsi'  " readline bindings in insert and command line mode
+Plugin 'jeffkreeftmeijer/vim-numbertoggle'
 " bracket maps - [n / ]n for previous/next SCM conflict, [e for exchanging line with previous lines(s), etc.
 " Plugin 'tpope/vim-unimpaired'
 " Plugin 'tpope/vim-sleuth'  " heuristically set tab and space settings
