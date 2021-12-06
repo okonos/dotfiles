@@ -459,6 +459,7 @@ set wildmenu  " show possible completions on the command line
 set wildmode=longest,list,full  " first tab completes as much as possible, second tab provides a list, third and subsequent cycle through options
 set wildignore=*.class,*.o,*~,*.pyc,.git  " Ignore certain files in completion
 set shortmess+=A    " Don't bother me when a swapfile exists
+set number
 set ruler           " Always show current position
 " set cmdheight=2   " Height of the command bar
 set undodir=$HOME/.vim/undodir
@@ -488,17 +489,6 @@ set noerrorbells
 set novisualbell
 set t_vb=
 set tm=500
-
-" Display hybrid line numbers (both absolute and relative)
-" only on focused buffer and in normal mode
-" https://jeffkreeftmeijer.com/vim-number/
-"set number relativenumber
-"
-"augroup numbertoggle
-"	autocmd!
-"	autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-"	autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-":augroup END
 
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
