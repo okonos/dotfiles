@@ -3,7 +3,7 @@
 [push]
 	default = simple
 [core]
-	editor = vim
+	editor = nvim
 	attributesfile = ~/.gitattributes
 [include]
     path = ~/.gitconfig_local
