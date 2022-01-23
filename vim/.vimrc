@@ -68,8 +68,15 @@ Plugin 'lambdalisue/suda.vim'  " :w !sudo tee % doest not work in neovim. Usage:
 Plugin 'vimwiki/vimwiki'
 Plugin 'tmhedberg/SimpylFold'
 Plugin 'Konfekt/FastFold'
+" Plugin 'ycm-core/YouCompleteMe'
+Plugin 'neovim/nvim-lspconfig'
+Plugin 'hrsh7th/nvim-cmp'  " autocompletion
+Plugin 'hrsh7th/cmp-nvim-lsp'
+Plugin 'hrsh7th/cmp-buffer'
+Plugin 'hrsh7th/cmp-path'
+Plugin 'hrsh7th/cmp-cmdline'
 Plugin 'SirVer/ultisnips'
-Plugin 'ycm-core/YouCompleteMe'
+Plugin 'quangnguyen30192/cmp-nvim-ultisnips'  " for nvim-cmp
 Plugin 'dense-analysis/ale'  " Asynchronous Linting Engine
 Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually or installed via package manager
 Plugin 'mileszs/ack.vim'
