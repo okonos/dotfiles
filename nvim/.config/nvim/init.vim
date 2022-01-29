@@ -116,6 +116,7 @@ local servers = {
         },
     },
     pyright = {},
+    tsserver = {},
 }
 for lsp, settings in pairs(servers) do
     lspconfig[lsp].setup {
