@@ -677,7 +677,7 @@ vmap <M-k> :m'<-2<cr>`>my`<mzgv`yo`z
 
 " Move between errors in quickfix list
 map <C-n> :cnext<cr>
-map <C-m> :cprevious<cr>
+map <C-b> :cprevious<cr>
 nnoremap <leader>a :cclose<cr>
 nmap \x :cclose<cr>
 
