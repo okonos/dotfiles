@@ -215,6 +215,7 @@ nmap <leader>gp <Plug>(GitGutterPreviewHunk)
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:vimwiki_map_prefix = '<leader>v'
 " let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{'auto_diary_index': 1}]
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Ultisnips
