@@ -37,91 +37,60 @@ let g:python3_host_prog = '/usr/bin/python3'
 
 let g:polyglot_disabled = ['python', 'go']
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" " alternatively, pass a path where Vundle should install plugins
-" "call vundle#begin('~/some/path/here')
-"
-" " let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
+" automatic vim-plug installation
+let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+if empty(glob(data_dir . '/autoload/plug.vim'))
+  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
+call plug#begin()
 " navigate seamlessly between vim and tmux splits using <ctrl-direction> hotkeys
-Plugin 'itchyny/lightline.vim'
-Plugin 'taohexxx/lightline-buffer'
-Plugin 'taohexxx/lightline-solarized'
-Plugin 'maximbaz/lightline-ale'  " warnings and errors on lightline
-Plugin 'christoomey/vim-tmux-navigator'
-Plugin 'kassio/neoterm'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tpope/vim-rhubarb'  " fugitive extension, includes :Gbrowse and sets up :Git to use hub when installed
-Plugin 'tpope/vim-repeat'  " . command working for a set of plugins (worth for the vim-surround alone)
-Plugin 'tpope/vim-commentary'  " gc to comment
-Plugin 'tpope/vim-rsi'  " readline bindings in insert and command line mode
-Plugin 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'itchyny/lightline.vim'
+Plug 'taohexxx/lightline-buffer'
+Plug 'taohexxx/lightline-solarized'
+Plug 'maximbaz/lightline-ale'  " warnings and errors on lightline
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'kassio/neoterm'
+Plug 'gennaro-tedesco/nvim-jqx'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-rhubarb'  " fugitive extension, includes :Gbrowse and sets up :Git to use hub when installed
+Plug 'tpope/vim-repeat'  " . command working for a set of plugins (worth for the vim-surround alone)
+Plug 'tpope/vim-commentary'  " gc to comment
+Plug 'tpope/vim-rsi'  " readline bindings in insert and command line mode
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
 " bracket maps - [n / ]n for previous/next SCM conflict, [e for exchanging line with previous lines(s), etc.
-" Plugin 'tpope/vim-unimpaired'
-" Plugin 'tpope/vim-sleuth'  " heuristically set tab and space settings
-Plugin 'airblade/vim-gitgutter'
-Plugin 'lambdalisue/suda.vim'  " :w !sudo tee % doest not work in neovim. Usage: :w suda://%
-Plugin 'vimwiki/vimwiki'
-Plugin 'tmhedberg/SimpylFold'
-Plugin 'Konfekt/FastFold'
-" Plugin 'ycm-core/YouCompleteMe'
-Plugin 'neovim/nvim-lspconfig'
-Plugin 'hrsh7th/nvim-cmp'  " autocompletion
-Plugin 'hrsh7th/cmp-nvim-lsp'
-Plugin 'hrsh7th/cmp-buffer'
-Plugin 'hrsh7th/cmp-path'
-Plugin 'hrsh7th/cmp-cmdline'
-Plugin 'SirVer/ultisnips'
-Plugin 'quangnguyen30192/cmp-nvim-ultisnips'  " for nvim-cmp
-Plugin 'dense-analysis/ale'  " Asynchronous Linting Engine
-Plugin 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually or installed via package manager
-Plugin 'mileszs/ack.vim'
-Plugin 'simnalamburt/vim-mundo'  " Vim undo tree visualizer
-Plugin 'scrooloose/nerdtree'
-Plugin 'python-mode/python-mode'
-Plugin 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-Plugin 'sheerun/vim-polyglot' " better leave it at the end so that it does not interfere with the above
-Plugin 'ryanoasis/vim-devicons' " should be loaded as the last one
+" Plug 'tpope/vim-unimpaired'
+" Plug 'tpope/vim-sleuth'  " heuristically set tab and space settings
+Plug 'airblade/vim-gitgutter'
+Plug 'lambdalisue/suda.vim'  " :w !sudo tee % doest not work in neovim. Usage: :w suda://%
+Plug 'vimwiki/vimwiki'
+Plug 'tmhedberg/SimpylFold'
+Plug 'Konfekt/FastFold'
+" Plug 'ycm-core/YouCompleteMe'
+Plug 'neovim/nvim-lspconfig'
+" Supports nvim 0.7.x and higher since April something: https://github.com/hrsh7th/nvim-cmp/issues/231#issuecomment-1102917158
+Plug 'hrsh7th/nvim-cmp', { 'commit': '3192a0c57837c1ec5bf298e4f3ec984c7d2d60c0' } " autocompletion
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'SirVer/ultisnips'
+Plug 'quangnguyen30192/cmp-nvim-ultisnips'  " for nvim-cmp
+Plug 'dense-analysis/ale'  " Asynchronous Linting Engine
+Plug 'junegunn/fzf.vim'  " the fzf must be cloned and installed manually or installed via package manager
+Plug 'mileszs/ack.vim'
+Plug 'simnalamburt/vim-mundo'  " Vim undo tree visualizer
+Plug 'scrooloose/nerdtree'
+Plug 'python-mode/python-mode'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'sheerun/vim-polyglot' " better leave it at the end so that it does not interfere with the above
+Plug 'ryanoasis/vim-devicons' " should be loaded as the last one
 
 " Plugin 'jmcantrell/vim-virtualenv'
 " Plugin 'altercation/vim-colors-solarized'
-
-" " The following are examples of different formats supported.
-" " Keep Plugin commands between vundle#begin/end.
-" " plugin on GitHub repo
-"Plugin 'tpope/vim-fugitive'
-" " plugin from http://vim-scripts.org/vim/scripts.html
-"Plugin 'L9'
-" " Git plugin not hosted on GitHub
-"Plugin 'git://git.wincent.com/command-t.git'
-" " git repos on your local machine (i.e. when working on your own plugin)
-"Plugin 'file:///home/gmarik/path/to/plugin'
-" " The sparkup vim script is in a subdirectory of this repo called vim.
-" " Pass the path to set the runtimepath properly.
-"Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-" " Install L9 and avoid a Naming conflict if you've already installed a
-" " different version somewhere else.
-"Plugin 'ascenator/L9', {'name': 'newL9'}
-"
-" " All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" " To ignore plugin indent changes, instead use:
-" "filetype plugin on
-" "
-" " Brief help
-" " :PluginList       - lists configured plugins
-" " :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" " :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" " :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-" "
-" " see :h vundle for more details or wiki for FAQ
-" " Put your non-Plugin stuff after this line
-
+call plug#end()
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " => Plugin-related
