@@ -31,3 +31,4 @@ include /usr/share/taskwarrior/solarized-dark-256.theme
 
 uda.priority.values=H,M,,L
 urgency.uda.priority.L.coefficient=-3
+news.version=2.6.0
