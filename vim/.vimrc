@@ -225,8 +225,11 @@ let g:ale_lint_delay = 500
 " Don't run while typing, can be set to insert or normal, see :help
 " let g:ale_lint_on_text_changed = 'never'
 
-let g:ale_fixers = {'python': ['isort']}
-" let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   'javascript': ['prettier'],
+\   'typescript': ['prettier'],
+\   'python': ['black', 'isort'],
+\}
 
 let g:ale_fix_on_save = 0
 
