@@ -84,6 +84,7 @@ Plug 'mileszs/ack.vim'
 Plug 'simnalamburt/vim-mundo'  " Vim undo tree visualizer
 Plug 'scrooloose/nerdtree'
 Plug 'python-mode/python-mode'
+Plug 'psf/black', { 'branch': 'stable' }
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'sheerun/vim-polyglot' " better leave it at the end so that it does not interfere with the above
 Plug 'ryanoasis/vim-devicons' " should be loaded as the last one
@@ -226,6 +227,8 @@ let g:ale_lint_delay = 500
 let g:ale_fixers = {'python': ['isort']}
 " let g:ale_fix_on_save = 1
 
+let g:ale_fix_on_save = 0
+
 " let g:ale_linters_ignore = {'python': ['pylint']}
 
 let g:ale_python_mypy_options = '--show-error-codes'
@@ -296,6 +299,17 @@ autocmd FileType python nmap <leader>trf :TREPLSendFile<cr>
 autocmd FileType python nmap gx <Plug>(neoterm-repl-send)
 autocmd FileType python xmap gx <Plug>(neoterm-repl-send)
 autocmd FileType python nmap gxx <Plug>(neoterm-repl-send-line)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" black
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:black_linelength = 120
+
+" used in ale_fixers instead
+" augroup black_on_save
+"   autocmd!
+"   autocmd BufWritePre *.py Black
+" augroup end
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " vim-go
