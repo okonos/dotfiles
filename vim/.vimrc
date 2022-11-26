@@ -191,6 +191,7 @@ let g:vimwiki_list = [{'auto_diary_index': 1}]
 " Ultisnips
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:UltiSnipsExpandTrigger='<c-k>'
+let g:UltiSnipsJumpBackwardTrigger='<c-h>'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " *YouCompleteMe
