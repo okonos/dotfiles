@@ -127,7 +127,7 @@ let g:lightline = {
 	\   'linter_errors': 'error',
     \ },
 	\ 'component_function': {
-	\	'gitbranch': 'fugitive#head',
+	\	'gitbranch': 'fugitive#Head',
 	\	'bufferinfo': 'lightline#buffer#bufferinfo',
 	\ },
 	\ 'component': {
